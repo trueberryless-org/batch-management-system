@@ -34,7 +34,11 @@ export default function AppBreadcrumbNavigator() {
                             <Fragment key={item.name}>
                                 <BreadcrumbItem className={item.isLast ? "hidden md:block" : ""}>
                                     {!item.isLast ? (
-                                        <BreadcrumbLink href={item.href}>{item.name}</BreadcrumbLink>
+                                        item.href ? (
+                                            <BreadcrumbLink href={item.href}>{item.name}</BreadcrumbLink>
+                                        ) : (
+                                            item.name
+                                        )
                                     ) : (
                                         <BreadcrumbPage>{item.name}</BreadcrumbPage>
                                     )}

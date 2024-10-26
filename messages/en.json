@@ -1,8 +1,4 @@
 {
-    "homePage": {
-        "title": "Hello world!",
-        "about": "Go to the about page"
-    },
     "header": {
         "navigation": {
             "ingredients": {
@@ -134,6 +130,9 @@
             "haveAccount": "Already have an account?",
             "haveAccountLink": "Sign in"
         }
+    },
+    "dashboard": {
+        "title": "Dashboard"
     },
     "legalMatters": {
         "title": "Legal matters",

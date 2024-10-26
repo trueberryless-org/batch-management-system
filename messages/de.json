@@ -135,6 +135,9 @@
             "haveAccountLink": "Anmelden"
         }
     },
+    "dashboard": {
+        "title": "Dashboard"
+    },
     "legalMatters": {
         "title": "Rechtsangelegenheiten",
         "imprint": {

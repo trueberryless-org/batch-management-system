@@ -2,11 +2,7 @@
 
 import { ReactNode, createContext, useContext, useState } from "react";
 
-export type BreadcrumbItem = {
-    name: string;
-    href?: string;
-    isLast: boolean;
-};
+export type BreadcrumbItem = { name: string; isLast: true } | { name: string; href?: string; isLast: false };
 
 type BreadcrumbContextType = {
     breadcrumbItems: BreadcrumbItem[];
