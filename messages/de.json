@@ -1,7 +1,8 @@
 {
-    "homePage": {
-        "title": "Hallo Welt!",
-        "about": "Navigieren Sie zu \"Über uns\""
+    "metadata": {
+        "title": "Chargenmanagement-System",
+        "companyName": "Richter glutenfreie Produktions GmbH",
+        "type": "Unternehmen"
     },
     "header": {
         "navigation": {

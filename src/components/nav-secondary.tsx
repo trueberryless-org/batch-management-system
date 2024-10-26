@@ -1,29 +1,25 @@
-import * as React from "react"
-import { type LucideIcon } from "lucide-react"
+import { Link } from "@/i18n/routing";
+import { type LucideIcon } from "lucide-react";
+import * as React from "react";
 
 import {
-  SidebarGroup,
-  SidebarGroupContent,
-  SidebarMenu,
-  SidebarMenuButton,
-  SidebarMenuItem,
-} from "@/components/ui/sidebar"
+    SidebarGroup,
+    SidebarGroupContent,
+    SidebarMenu,
+    SidebarMenuButton,
+    SidebarMenuItem,
+} from "@/components/ui/sidebar";
 
-export function NavSecondary({
-  items,
-  ...props
-}: {
-  items: {
-    title: string
-    url: string
-    icon: LucideIcon
-  }[]
-} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
-  return (
-    <SidebarGroup {...props}>
-      <SidebarGroupContent>
-        <SidebarMenu>
-          {items.map((item) => (
+import SidebarLanguageSwitcher from "./switches/sidebar-language-switcher";
+import SidebarModeSwitcher from "./switches/sidebar-mode-switcher";
+import SidebarThemeSwitcher from "./switches/sidebar-theme-switcher";
+
+export function NavSecondary({ ...props }: {} & React.ComponentPropsWithoutRef<typeof SidebarGroup>) {
+    return (
+        <SidebarGroup {...props}>
+            <SidebarGroupContent>
+                <SidebarMenu>
+                    {/* {items.map((item) => (
             <SidebarMenuItem key={item.title}>
               <SidebarMenuButton asChild size="sm">
                 <a href={item.url}>
@@ -32,9 +28,18 @@ export function NavSecondary({
                 </a>
               </SidebarMenuButton>
             </SidebarMenuItem>
-          ))}
-        </SidebarMenu>
-      </SidebarGroupContent>
-    </SidebarGroup>
-  )
+          ))} */}
+                    <SidebarMenuItem>
+                        <SidebarLanguageSwitcher />
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                        <SidebarThemeSwitcher />
+                    </SidebarMenuItem>
+                    <SidebarMenuItem>
+                        <SidebarModeSwitcher />
+                    </SidebarMenuItem>
+                </SidebarMenu>
+            </SidebarGroupContent>
+        </SidebarGroup>
+    );
 }

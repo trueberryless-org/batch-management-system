@@ -1,4 +1,9 @@
 {
+    "metadata": {
+        "title": "Batch Management System",
+        "companyName": "Richter gluten-free production company",
+        "type": "Enterprise"
+    },
     "header": {
         "navigation": {
             "ingredients": {
