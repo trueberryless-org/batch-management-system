@@ -139,6 +139,82 @@
     "dashboard": {
         "title": "Dashboard"
     },
+    "ingredients": {
+        "title": "Zutaten",
+        "overview": {
+            "title": "Übersicht",
+            "description": "Statistiken für Zutaten in einem Dashboard"
+        },
+        "list": {
+            "title": "Liste",
+            "description": "Eine Liste aller Zutaten in einer Tabelle"
+        },
+        "create": {
+            "title": "Erstellen",
+            "description": "Mehr Zutaten helfen, feinere Rezept zu kreieren"
+        },
+        "edit": {
+            "title": "Bearbeiten",
+            "description": "Ist Ihnen eh keinen Tippfehler unterlaufen?"
+        }
+    },
+    "products": {
+        "title": "Produkte",
+        "overview": {
+            "title": "Übersicht",
+            "description": "Statistiken für Produkte in einem Dashboard"
+        },
+        "list": {
+            "title": "Liste",
+            "description": "Eine Liste aller Produkte in einer Tabelle"
+        },
+        "create": {
+            "title": "Erstellen",
+            "description": "Jede Erstellung beginnt irgendwo"
+        },
+        "edit": {
+            "title": "Bearbeiten",
+            "description": "Nicht zufrieden mit dem aktuellen Produkt?"
+        }
+    },
+    "recipes": {
+        "title": "Rezepte",
+        "overview": {
+            "title": "Übersicht",
+            "description": "Statistiken für Rezepte in einem Dashboard"
+        },
+        "list": {
+            "title": "Liste",
+            "description": "Eine Liste aller Rezepte in einer Tabelle"
+        },
+        "create": {
+            "title": "Erstellen",
+            "description": "Jede Kreation beginnt irgendwo"
+        },
+        "edit": {
+            "title": "Bearbeiten",
+            "description": "Nicht zufrieden mit dem aktuellen Rezept?"
+        }
+    },
+    "batches": {
+        "title": "Chargen",
+        "overview": {
+            "title": "Übersicht",
+            "description": "Statistiken für Chargen in einem Dashboard"
+        },
+        "list": {
+            "title": "Liste",
+            "description": "Eine Liste aller Chargen in einer Tabelle"
+        },
+        "create": {
+            "title": "Erstellen",
+            "description": "Jede Erstellung beginnt irgendwo"
+        },
+        "edit": {
+            "title": "Bearbeiten",
+            "description": "Nicht zufrieden mit dem aktuellen Charge?"
+        }
+    },
     "legalMatters": {
         "title": "Rechtsangelegenheiten",
         "imprint": {

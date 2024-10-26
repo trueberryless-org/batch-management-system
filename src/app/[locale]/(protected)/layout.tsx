@@ -7,9 +7,10 @@ export default async function ProtectedLayout({ children }: { children: React.Re
 
     const {
         data: { user },
+        error,
     } = await supabase.auth.getUser();
 
-    if (!user) {
+    if (!user || error) {
         return redirect("/sign-in");
     }
 
