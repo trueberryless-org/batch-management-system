@@ -1,21 +1,36 @@
+"use client";
+
 import { signUpAction } from "@/app/actions";
 import { Link, routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { useEffect } from "react";
 
 import { FormMessage, Message } from "@/components/form-message";
+import { BreadcrumbItem, useBreadcrumb } from "@/components/page-header/breadcrumb-context";
 import { SubmitButton } from "@/components/submit-button";
 
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-export async function generateStaticParams() {
-    const locales = routing.locales;
-    return locales.map((locale) => ({ locale }));
-}
+// export async function generateStaticParams() {
+//     const locales = routing.locales;
+//     return locales.map((locale) => ({ locale }));
+// }
 
 export default function Signup({ searchParams }: { searchParams: Message }) {
     const t = useTranslations("authPages.signUp");
+    const tParent = useTranslations("authPages");
+
+    const { setBreadcrumbItems } = useBreadcrumb();
+
+    useEffect(() => {
+        const items: BreadcrumbItem[] = [
+            { name: tParent("title"), isLast: false },
+            { name: t("title"), isLast: true },
+        ];
+        setBreadcrumbItems(items);
+    }, [setBreadcrumbItems]);
 
     if ("message" in searchParams) {
         return (

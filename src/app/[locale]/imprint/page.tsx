@@ -8,13 +8,14 @@ import { BreadcrumbItem, useBreadcrumb } from "@/components/page-header/breadcru
 import SupabaseLogo from "@/components/supabase-logo";
 
 export default function Imprint() {
-    const t = useTranslations("legalMatters");
+    const t = useTranslations("legalMatters.imprint");
+    const tParent = useTranslations("legalMatters");
     const { setBreadcrumbItems } = useBreadcrumb();
 
     useEffect(() => {
         const items: BreadcrumbItem[] = [
-            { name: t("title"), isLast: false },
-            { name: t("imprint.title"), isLast: true },
+            { name: tParent("title"), isLast: false },
+            { name: t("title"), isLast: true },
         ];
         setBreadcrumbItems(items);
     }, [setBreadcrumbItems]);

@@ -96,6 +96,7 @@
         }
     },
     "authPages": {
+        "title": "Authentifizierung",
         "signIn": {
             "title": "Anmeldung",
             "explanation": "Geben Sie Ihre Daten ein, um sich anzumelden",

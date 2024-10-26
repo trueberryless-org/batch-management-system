@@ -96,6 +96,7 @@
         }
     },
     "authPages": {
+        "title": "Authentication",
         "signIn": {
             "title": "Login",
             "explanation": "Enter your email below to login to your account",
