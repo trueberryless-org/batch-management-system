@@ -133,5 +133,11 @@
             "haveAccount": "Already have an account?",
             "haveAccountLink": "Sign in"
         }
+    },
+    "legalMatters": {
+        "title": "Legal matters",
+        "imprint": {
+            "title": "Imprint"
+        }
     }
 }

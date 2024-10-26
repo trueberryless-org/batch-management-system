@@ -133,5 +133,11 @@
             "haveAccount": "Haben Sie bereits einen Account?",
             "haveAccountLink": "Anmelden"
         }
+    },
+    "legalMatters": {
+        "title": "Rechtsangelegenheiten",
+        "imprint": {
+            "title": "Impressum"
+        }
     }
 }

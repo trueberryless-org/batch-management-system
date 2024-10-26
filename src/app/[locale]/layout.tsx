@@ -5,8 +5,9 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 
-import AppHeader from "@/components/app-header";
 import { AppSidebar } from "@/components/app-sidebar";
+import AppHeader from "@/components/page-header/app-header";
+import { BreadcrumbProvider } from "@/components/page-header/breadcrumb-context";
 
 import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
@@ -33,11 +34,13 @@ export default async function RootLayout({
                 <NextIntlClientProvider messages={messages}>
                     <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
                         <SidebarProvider>
-                            <AppSidebar />
-                            <SidebarInset>
-                                <AppHeader />
-                                {children}
-                            </SidebarInset>
+                            <BreadcrumbProvider>
+                                <AppSidebar />
+                                <SidebarInset>
+                                    <AppHeader />
+                                    {children}
+                                </SidebarInset>
+                            </BreadcrumbProvider>
                         </SidebarProvider>
                     </ThemeProvider>
                 </NextIntlClientProvider>
