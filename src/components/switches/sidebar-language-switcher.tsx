@@ -34,7 +34,7 @@ export default function SidebarLanguageSwitcher() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <SidebarMenuButton size="sm">
+                <SidebarMenuButton size="sm" tooltip={t("label")}>
                     <Languages className="h-[1.2rem] w-[1.2rem]" />
                     <span>{t("label")}</span>
                 </SidebarMenuButton>

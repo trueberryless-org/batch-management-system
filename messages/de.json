@@ -94,6 +94,11 @@
         "localeSwitcher": {
             "label": "Sprache ändern",
             "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unbekannt}}"
+        },
+        "user": {
+            "signIn": "Anmelden",
+            "signUp": "Registrieren",
+            "signOut": "Abmelden"
         }
     },
     "authPages": {

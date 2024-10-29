@@ -1,19 +1,5 @@
-"use client";
-
 import { Link } from "@/i18n/routing";
-import {
-    BookOpen,
-    Bot,
-    ChefHat,
-    Command,
-    Frame,
-    LifeBuoy,
-    Map,
-    PieChart,
-    Send,
-    Settings2,
-    SquareTerminal,
-} from "lucide-react";
+import { ChefHat } from "lucide-react";
 import { useTranslations } from "next-intl";
 import * as React from "react";
 
@@ -39,7 +25,7 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
             <SidebarHeader>
                 <SidebarMenu>
                     <SidebarMenuItem>
-                        <SidebarMenuButton size="lg" asChild>
+                        <SidebarMenuButton size="lg" asChild tooltip={t("companyName")}>
                             <Link href="/">
                                 <div className="flex aspect-square size-8 items-center justify-center rounded-lg bg-sidebar-primary text-sidebar-primary-foreground">
                                     <ChefHat className="size-4" />
@@ -57,7 +43,9 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
                 <NavMain />
                 <NavSecondary className="mt-auto" />
             </SidebarContent>
-            <SidebarFooter>{/* <NavUser /> */}</SidebarFooter>
+            <SidebarFooter>
+                <NavUser />
+            </SidebarFooter>
         </Sidebar>
     );
 }

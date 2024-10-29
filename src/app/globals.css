@@ -29,11 +29,11 @@
         --destructive-foreground: 210 40% 98%;
 
         --sidebar-background: 0 0% 98%;
-        --sidebar-foreground: 240 5.3% 26.1%;
-        --sidebar-primary: 240 5.9% 10%;
+        --sidebar-foreground: 222.2 5.3% 26.1%;
+        --sidebar-primary: 222.2 5.9% 10%;
         --sidebar-primary-foreground: 0 0% 98%;
-        --sidebar-accent: 240 4.8% 95.9%;
-        --sidebar-accent-foreground: 240 5.9% 10%;
+        --sidebar-accent: 222.2 4.8% 95.9%;
+        --sidebar-accent-foreground: 222.2 5.9% 10%;
         --sidebar-border: 220 13% 91%;
         --sidebar-ring: 217.2 91.2% 59.8%;
 
@@ -132,13 +132,13 @@
         --destructive: 0 62.8% 30.6%;
         --destructive-foreground: 210 40% 98%;
 
-        --sidebar-background: 240 5.9% 10%;
-        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-background: 210 5.9% 10%;
+        --sidebar-foreground: 210 4.8% 95.9%;
         --sidebar-primary: 224.3 76.3% 48%;
         --sidebar-primary-foreground: 0 0% 100%;
-        --sidebar-accent: 240 3.7% 15.9%;
-        --sidebar-accent-foreground: 240 4.8% 95.9%;
-        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-accent: 210 3.7% 15.9%;
+        --sidebar-accent-foreground: 210 4.8% 95.9%;
+        --sidebar-border: 210 3.7% 15.9%;
         --sidebar-ring: 217.2 91.2% 59.8%;
 
         --border: 217.2 32.6% 17.5%;
@@ -524,6 +524,15 @@
         --chart-4: 240 1% 58%;
         --chart-5: 240 2% 74%;
 
+        --sidebar-background: 0 0% 98%;
+        --sidebar-foreground: 240 5.3% 26.1%;
+        --sidebar-primary: 240 5.9% 10%;
+        --sidebar-primary-foreground: 0 0% 98%;
+        --sidebar-accent: 240 4.8% 95.9%;
+        --sidebar-accent-foreground: 240 5.9% 10%;
+        --sidebar-border: 220 13% 91%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
+
         --color-1: var(--color-1-midnight);
         --color-2: var(--color-2-midnight);
         --color-3: var(--color-3-midnight);
@@ -555,6 +564,15 @@
         --chart-3: 240 1% 58%;
         --chart-4: 240 1% 42%;
         --chart-5: 240 2% 26%;
+
+        --sidebar-background: 240 5.9% 10%;
+        --sidebar-foreground: 240 4.8% 95.9%;
+        --sidebar-primary: 224.3 76.3% 48%;
+        --sidebar-primary-foreground: 0 0% 100%;
+        --sidebar-accent: 240 3.7% 15.9%;
+        --sidebar-accent-foreground: 240 4.8% 95.9%;
+        --sidebar-border: 240 3.7% 15.9%;
+        --sidebar-ring: 217.2 91.2% 59.8%;
     }
 
     .coral {

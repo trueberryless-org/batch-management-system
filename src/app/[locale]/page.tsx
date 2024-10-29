@@ -1,22 +1,17 @@
-"use client";
-
 import { useTranslations } from "next-intl";
-import { useEffect } from "react";
 
 import Hero from "@/components/hero";
-import { BreadcrumbItem, useBreadcrumb } from "@/components/page-header/breadcrumb-context";
+import BreadcrumbContextSetter from "@/components/page-header/breadcrumb-context-setter";
+import { BreadcrumbItemType } from "@/components/page-header/breadcrumb-navigator";
 
 export default function Index() {
     const t = useTranslations("dashboard");
-    const { setBreadcrumbItems } = useBreadcrumb();
 
-    useEffect(() => {
-        const items: BreadcrumbItem[] = [{ name: t("title"), isLast: true }];
-        setBreadcrumbItems(items);
-    }, [setBreadcrumbItems]);
+    const breadcrumbItems: BreadcrumbItemType[] = [{ name: t("title"), isLast: true }];
 
     return (
         <>
+            <BreadcrumbContextSetter breadcrumbItems={breadcrumbItems} />
             <Hero />
         </>
     );

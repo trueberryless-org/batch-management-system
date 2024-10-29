@@ -14,7 +14,9 @@ import {
 import { Skeleton } from "../ui/skeleton";
 import { useBreadcrumb } from "./breadcrumb-context";
 
-export default function AppBreadcrumbNavigator() {
+export type BreadcrumbItemType = { name: string; isLast: true } | { name: string; href?: string; isLast: false };
+
+export default function BreadcrumbNavigator() {
     const { breadcrumbItems } = useBreadcrumb();
 
     return (

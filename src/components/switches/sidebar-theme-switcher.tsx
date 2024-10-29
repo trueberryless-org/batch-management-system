@@ -52,7 +52,7 @@ export default function SidebarThemeSwitcher() {
     return (
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
-                <SidebarMenuButton size="sm">
+                <SidebarMenuButton size="sm" tooltip={t("label")}>
                     <Palette className="h-[1.2rem] w-[1.2rem]" />
                     <span>{t("label")}</span>
                 </SidebarMenuButton>

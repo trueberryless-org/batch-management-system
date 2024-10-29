@@ -1,6 +1,9 @@
-import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogOut, Sparkles } from "lucide-react";
+import { signOutAction } from "@/app/actions";
+import { Link } from "@/i18n/routing";
+import { BadgeCheck, Bell, ChevronsUpDown, CreditCard, LogIn, LogOut, Sparkles, UserRoundPlus } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-import { createClient } from "@/utils/supabase/client";
+import { createClient } from "@/utils/supabase/server";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -14,8 +17,11 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { SidebarMenu, SidebarMenuButton, SidebarMenuItem, useSidebar } from "@/components/ui/sidebar";
 
+import { Button } from "./ui/button";
+
 export async function NavUser() {
-    const { isMobile } = useSidebar();
+    // const { isMobile } = useSidebar();
+    const t = useTranslations("header.user");
     const {
         data: { user },
     } = await createClient().auth.getUser();
@@ -44,7 +50,7 @@ export async function NavUser() {
                     </DropdownMenuTrigger>
                     <DropdownMenuContent
                         className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-lg"
-                        side={isMobile ? "bottom" : "right"}
+                        side={false ? "bottom" : "right"}
                         align="end"
                         sideOffset={4}
                     >
@@ -83,17 +89,36 @@ export async function NavUser() {
                             </DropdownMenuItem>
                         </DropdownMenuGroup>
                         <DropdownMenuSeparator />
-                        <DropdownMenuItem>
-                            <LogOut />
-                            Log out
-                        </DropdownMenuItem>
+                        <form action={signOutAction}>
+                            <Button type="submit" asChild>
+                                <DropdownMenuItem>
+                                    <LogOut />
+                                    Log out
+                                </DropdownMenuItem>
+                            </Button>
+                        </form>
                     </DropdownMenuContent>
                 </DropdownMenu>
             </SidebarMenuItem>
         </SidebarMenu>
     ) : (
         <SidebarMenu>
-            <SidebarMenuItem>No User</SidebarMenuItem>
+            <SidebarMenuItem>
+                <div className="flex gap-4">
+                    <SidebarMenuButton asChild tooltip={t("signIn")}>
+                        <Link href="/sign-in">
+                            <LogIn />
+                            <span>{t("signIn")}</span>
+                        </Link>
+                    </SidebarMenuButton>
+                    <SidebarMenuButton asChild className="group-data-[collapsible=icon]:hidden">
+                        <Link href="/sign-up">
+                            <UserRoundPlus />
+                            <span>{t("signUp")}</span>
+                        </Link>
+                    </SidebarMenuButton>
+                </div>
+            </SidebarMenuItem>
         </SidebarMenu>
     );
 }

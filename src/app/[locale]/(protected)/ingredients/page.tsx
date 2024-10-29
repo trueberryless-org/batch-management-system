@@ -3,18 +3,14 @@
 import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
-import { BreadcrumbItem, useBreadcrumb } from "@/components/page-header/breadcrumb-context";
+import BreadcrumbContextSetter from "@/components/page-header/breadcrumb-context-setter";
+import { BreadcrumbItemType } from "@/components/page-header/breadcrumb-navigator";
 
 export default function Page() {
     const [ingredients, setIngredients] = useState<any[] | null>(null);
     const t = useTranslations("ingredients");
 
-    const { setBreadcrumbItems } = useBreadcrumb();
-
-    useEffect(() => {
-        const items: BreadcrumbItem[] = [{ name: t("title"), isLast: true }];
-        setBreadcrumbItems(items);
-    }, [setBreadcrumbItems]);
+    const breadcrumbItems: BreadcrumbItemType[] = [{ name: t("title"), isLast: true }];
 
     useEffect(() => {
         const getData = async () => {
@@ -25,5 +21,10 @@ export default function Page() {
         getData();
     }, []);
 
-    return <pre>{JSON.stringify(ingredients, null, 2)}</pre>;
+    return (
+        <>
+            <BreadcrumbContextSetter breadcrumbItems={breadcrumbItems} />
+            <pre>{JSON.stringify(ingredients, null, 2)}</pre>
+        </>
+    );
 }

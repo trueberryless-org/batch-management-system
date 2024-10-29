@@ -5,11 +5,11 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { ThemeProvider } from "next-themes";
 
-import { AppSidebar } from "@/components/app-sidebar";
-import AppHeader from "@/components/page-header/app-header";
 import { BreadcrumbProvider } from "@/components/page-header/breadcrumb-context";
+import Header from "@/components/page-header/header";
+import { AppSidebar } from "@/components/sidebar";
 
-import { SidebarInset, SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { SidebarInset, SidebarProvider } from "@/components/ui/sidebar";
 
 const defaultUrl = process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000";
 
@@ -37,7 +37,7 @@ export default async function RootLayout({
                             <BreadcrumbProvider>
                                 <AppSidebar />
                                 <SidebarInset>
-                                    <AppHeader />
+                                    <Header />
                                     {children}
                                 </SidebarInset>
                             </BreadcrumbProvider>
