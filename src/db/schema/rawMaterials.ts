@@ -3,7 +3,6 @@ import { boolean, pgTable, text, timestamp, unique, uuid } from "drizzle-orm/pg-
 
 import { ingredients } from "./ingredients";
 import { receivedBatches } from "./receivedBatches";
-import { tenants } from "./tenants";
 
 export const rawMaterials = pgTable(
     "raw_materials",
@@ -35,10 +34,9 @@ export const rawMaterials = pgTable(
             .notNull()
             .defaultNow()
             .$onUpdate(() => new Date()),
-        tenantId: uuid("tenant_id").references(() => tenants.id),
     },
     (t) => ({
-        unq: unique().on(t.tenantId, t.number),
+        unq: unique().on(t.number),
     }),
 );
 
@@ -50,10 +48,6 @@ export const rawMaterialsRelations = relations(rawMaterials, ({ one }) => ({
     batch: one(receivedBatches, {
         fields: [rawMaterials.batchId],
         references: [receivedBatches.id],
-    }),
-    tenant: one(tenants, {
-        fields: [rawMaterials.tenantId],
-        references: [tenants.id],
     }),
 }));
 

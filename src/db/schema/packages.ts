@@ -3,7 +3,6 @@ import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { nestables } from "./nestables";
 import { packageHierarchies } from "./packageHierarchies";
-import { tenants } from "./tenants";
 
 export const packages = pgTable("packages", {
     id: uuid("id")
@@ -25,7 +24,6 @@ export const packages = pgTable("packages", {
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const packagesRelations = relations(packages, ({ one, many }) => ({
@@ -34,10 +32,6 @@ export const packagesRelations = relations(packages, ({ one, many }) => ({
         references: [nestables.id],
     }),
     hierarchy: one(packageHierarchies),
-    tenant: one(tenants, {
-        fields: [packages.tenantId],
-        references: [tenants.id],
-    }),
 }));
 
 export type Package = typeof packages.$inferSelect;

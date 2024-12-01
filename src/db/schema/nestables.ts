@@ -5,7 +5,6 @@ import { bundles } from "./bundles";
 import { packages } from "./packages";
 import { palettes } from "./palettes";
 import { sellingUnitHierarchies } from "./sellingUnitHierarchies";
-import { tenants } from "./tenants";
 
 export const nestables = pgTable("nestables_bt", {
     id: uuid("id")
@@ -27,7 +26,6 @@ export const nestables = pgTable("nestables_bt", {
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const nestablesRelations = relations(nestables, ({ one, many }) => ({
@@ -38,10 +36,6 @@ export const nestablesRelations = relations(nestables, ({ one, many }) => ({
     package: one(packages),
     palette: one(palettes),
     children: many(sellingUnitHierarchies),
-    tenant: one(tenants, {
-        fields: [nestables.tenantId],
-        references: [tenants.id],
-    }),
 }));
 
 export type Nestable = typeof nestables.$inferSelect;

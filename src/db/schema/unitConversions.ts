@@ -1,7 +1,6 @@
 import { relations } from "drizzle-orm";
 import { doublePrecision, pgTable, primaryKey, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
-import { tenants } from "./tenants";
 import { units } from "./units";
 
 export const unitConversions = pgTable(
@@ -30,7 +29,6 @@ export const unitConversions = pgTable(
             .notNull()
             .defaultNow()
             .$onUpdate(() => new Date()),
-        tenantId: uuid("tenant_id").references(() => tenants.id),
     },
     (table) => ({
         pk: primaryKey(table.fromUnitId, table.toUnitId),
@@ -47,10 +45,6 @@ export const unitConversionsRelations = relations(unitConversions, ({ one }) => 
         fields: [unitConversions.toUnitId],
         references: [units.id],
         relationName: "toUnit",
-    }),
-    tenant: one(tenants, {
-        fields: [unitConversions.tenantId],
-        references: [tenants.id],
     }),
 }));
 

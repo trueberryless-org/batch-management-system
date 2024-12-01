@@ -3,7 +3,6 @@ import { pgTable, primaryKey, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { manufacturedConstituents } from "./manufacturedConstituents";
 import { manufacturedRecipes } from "./manufacturedRecipes";
-import { tenants } from "./tenants";
 
 export const manufacturedRecipeHasConstituents = pgTable(
     "manufactured_recipe_has_constituents_jt",
@@ -29,7 +28,6 @@ export const manufacturedRecipeHasConstituents = pgTable(
             .notNull()
             .defaultNow()
             .$onUpdate(() => new Date()),
-        tenantId: uuid("tenant_id").references(() => tenants.id),
     },
     (table) => ({
         pk: primaryKey(table.manufacturedConstituentId, table.manufacturedRecipeId),
@@ -46,10 +44,6 @@ export const manufacturedRecipeHasConstituentsRelations = relations(
         manufacturedRecipe: one(manufacturedRecipes, {
             fields: [manufacturedRecipeHasConstituents.manufacturedRecipeId],
             references: [manufacturedRecipes.id],
-        }),
-        tenant: one(tenants, {
-            fields: [manufacturedRecipeHasConstituents.tenantId],
-            references: [tenants.id],
         }),
     }),
 );

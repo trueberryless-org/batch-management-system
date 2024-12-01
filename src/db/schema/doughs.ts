@@ -3,7 +3,6 @@ import { AnyPgColumn, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { goods } from "./goods";
 import { recipes } from "./recipes";
-import { tenants } from "./tenants";
 
 export const doughs = pgTable("doughs", {
     id: uuid("id")
@@ -25,17 +24,12 @@ export const doughs = pgTable("doughs", {
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const doughsRelations = relations(doughs, ({ one }) => ({
     good: one(goods, {
         fields: [doughs.id],
         references: [goods.id],
-    }),
-    tenant: one(tenants, {
-        fields: [doughs.tenantId],
-        references: [tenants.id],
     }),
 }));
 

@@ -3,7 +3,6 @@ import { AnyPgColumn, pgTable, text, timestamp, unique, uuid } from "drizzle-orm
 
 import { constituents } from "./constituents";
 import { recipes } from "./recipes";
-import { tenants } from "./tenants";
 
 export const goods = pgTable(
     "goods_bt",
@@ -29,10 +28,9 @@ export const goods = pgTable(
             .notNull()
             .defaultNow()
             .$onUpdate(() => new Date()),
-        tenantId: uuid("tenant_id").references(() => tenants.id),
     },
     (t) => ({
-        unq: unique().on(t.tenantId, t.number),
+        unq: unique().on(t.number),
     }),
 );
 
@@ -46,10 +44,6 @@ export const goodsRelations = relations(goods, ({ one, many }) => ({
         references: [recipes.id],
     }),
     recipes: many(recipes),
-    tenant: one(tenants, {
-        fields: [goods.tenantId],
-        references: [tenants.id],
-    }),
 }));
 
 export type Good = typeof goods.$inferSelect;

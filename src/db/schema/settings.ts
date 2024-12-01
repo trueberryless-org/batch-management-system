@@ -1,7 +1,6 @@
 import { relations } from "drizzle-orm";
 import { pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 
-import { tenants } from "./tenants";
 import { users } from "./users";
 
 export const settings = pgTable("settings", {
@@ -26,17 +25,12 @@ export const settings = pgTable("settings", {
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const settingsRelations = relations(settings, ({ one }) => ({
     user: one(users, {
         fields: [settings.userId],
         references: [users.id],
-    }),
-    tenant: one(tenants, {
-        fields: [settings.tenantId],
-        references: [tenants.id],
     }),
 }));
 

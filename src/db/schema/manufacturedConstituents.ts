@@ -3,7 +3,6 @@ import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { constituents } from "./constituents";
 import { manufacturedRecipeHasConstituents } from "./manufacturedRecipeHasConstituents";
-import { tenants } from "./tenants";
 
 export const manufacturedConstituents = pgTable("manufactured_constituents_bt", {
     id: uuid("id").notNull().primaryKey().defaultRandom(),
@@ -25,7 +24,6 @@ export const manufacturedConstituents = pgTable("manufactured_constituents_bt", 
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const manufacturedConstituentsRelations = relations(manufacturedConstituents, ({ one, many }) => ({
@@ -34,10 +32,6 @@ export const manufacturedConstituentsRelations = relations(manufacturedConstitue
         references: [constituents.id],
     }),
     manufacturedRecipeHasConstituents: many(manufacturedRecipeHasConstituents),
-    tenant: one(tenants, {
-        fields: [manufacturedConstituents.tenantId],
-        references: [tenants.id],
-    }),
 }));
 
 export type ManufacturedConstituent = typeof manufacturedConstituents.$inferSelect;

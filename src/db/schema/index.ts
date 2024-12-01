@@ -112,9 +112,6 @@ export type { SellingUnit, NewSellingUnit } from "./sellingUnits";
 export { settings, settingsRelations } from "./settings";
 export type { Setting, NewSetting } from "./settings";
 
-export { tenants, tenantsRelations } from "./tenants";
-export type { Tenant, NewTenant } from "./tenants";
-
 export { unitConversions, unitConversionsRelations } from "./unitConversions";
 export type { UnitConversion, NewUnitConversion } from "./unitConversions";
 

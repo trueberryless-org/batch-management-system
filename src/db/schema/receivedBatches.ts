@@ -3,7 +3,6 @@ import { date, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { batches } from "./batches";
 import { rawMaterials } from "./rawMaterials";
-import { tenants } from "./tenants";
 
 export const receivedBatches = pgTable("received_batches", {
     id: uuid("id")
@@ -26,7 +25,6 @@ export const receivedBatches = pgTable("received_batches", {
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const receivedBatchesRelations = relations(receivedBatches, ({ one, many }) => ({
@@ -35,10 +33,6 @@ export const receivedBatchesRelations = relations(receivedBatches, ({ one, many 
         references: [batches.id],
     }),
     rawMaterials: many(rawMaterials),
-    tenant: one(tenants, {
-        fields: [receivedBatches.tenantId],
-        references: [tenants.id],
-    }),
 }));
 
 export type ReceivedBatch = typeof receivedBatches.$inferSelect;

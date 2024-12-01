@@ -3,7 +3,6 @@ import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { bundles } from "./bundles";
 import { sellingUnitHierarchies } from "./sellingUnitHierarchies";
-import { tenants } from "./tenants";
 
 export const sellingUnits = pgTable("selling_units", {
     id: uuid("id")
@@ -25,7 +24,6 @@ export const sellingUnits = pgTable("selling_units", {
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const sellingUnitsRelations = relations(sellingUnits, ({ one, many }) => ({
@@ -34,10 +32,6 @@ export const sellingUnitsRelations = relations(sellingUnits, ({ one, many }) => 
         references: [bundles.id],
     }),
     hierarchy: one(sellingUnitHierarchies),
-    tenant: one(tenants, {
-        fields: [sellingUnits.tenantId],
-        references: [tenants.id],
-    }),
 }));
 
 export type SellingUnit = typeof sellingUnits.$inferSelect;

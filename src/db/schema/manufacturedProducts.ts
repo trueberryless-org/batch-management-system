@@ -2,7 +2,6 @@ import { relations } from "drizzle-orm";
 import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { products } from "./products";
-import { tenants } from "./tenants";
 
 export const manufacturedProducts = pgTable("manufactured_products", {
     id: uuid("id").notNull().primaryKey().defaultRandom(),
@@ -24,17 +23,12 @@ export const manufacturedProducts = pgTable("manufactured_products", {
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const manufacturedProductsRelations = relations(manufacturedProducts, ({ one, many }) => ({
     product: one(products, {
         fields: [manufacturedProducts.productId],
         references: [products.id],
-    }),
-    tenant: one(tenants, {
-        fields: [manufacturedProducts.tenantId],
-        references: [tenants.id],
     }),
 }));
 

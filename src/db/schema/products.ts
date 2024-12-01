@@ -3,7 +3,6 @@ import { AnyPgColumn, boolean, doublePrecision, pgTable, timestamp, uuid } from 
 
 import { goods } from "./goods";
 import { recipes } from "./recipes";
-import { tenants } from "./tenants";
 
 export const products = pgTable("products", {
     id: uuid("id")
@@ -26,17 +25,12 @@ export const products = pgTable("products", {
         .notNull()
         .defaultNow()
         .$onUpdate(() => new Date()),
-    tenantId: uuid("tenant_id").references(() => tenants.id),
 });
 
 export const productsRelations = relations(products, ({ one, many }) => ({
     good: one(goods, {
         fields: [products.id],
         references: [goods.id],
-    }),
-    tenant: one(tenants, {
-        fields: [products.tenantId],
-        references: [tenants.id],
     }),
 }));
 
