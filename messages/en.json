@@ -1,229 +1,229 @@
 {
-    "metadata": {
-        "title": "Batch Management System",
-        "companyName": "Richter gluten-free production company",
-        "type": "Enterprise"
-    },
-    "header": {
-        "navigation": {
-            "ingredients": {
-                "title": "Ingredients",
-                "overview": {
-                    "title": "Overview",
-                    "description": "Some statistics about ingredients in a dashboard"
-                },
-                "list": {
-                    "title": "List",
-                    "description": "List all ingredients in a table view"
-                },
-                "create": {
-                    "title": "Create",
-                    "description": "More ingredients give more options to recipes"
-                },
-                "edit": {
-                    "title": "Edit",
-                    "description": "Did you accidentally mistype something?"
-                }
-            },
-            "products": {
-                "title": "Products",
-                "overview": {
-                    "title": "Overview",
-                    "description": "Some statistics about products in a dashboard"
-                },
-                "list": {
-                    "title": "List",
-                    "description": "List all products in a table view"
-                },
-                "create": {
-                    "title": "Create",
-                    "description": "Produce something new"
-                },
-                "edit": {
-                    "title": "Edit",
-                    "description": "Not enjoying the current product enough?"
-                }
-            },
-            "recipes": {
-                "title": "Recipes",
-                "overview": {
-                    "title": "Overview",
-                    "description": "Some statistics about recipes in a dashboard"
-                },
-                "list": {
-                    "title": "List",
-                    "description": "List all recipes in a table view"
-                },
-                "create": {
-                    "title": "Create",
-                    "description": "Every creation starts somewhere"
-                },
-                "edit": {
-                    "title": "Edit",
-                    "description": "Not satisfied with your current recipe?"
-                }
-            },
-            "batches": {
-                "title": "Batches",
-                "overview": {
-                    "title": "Overview",
-                    "description": "A basic overview of all the batches in a dashboard"
-                },
-                "list": {
-                    "title": "List",
-                    "description": "List all batches in a table view"
-                },
-                "create": {
-                    "title": "Create",
-                    "description": "I hope you can count because we'll need a successor"
-                },
-                "edit": {
-                    "title": "Edit",
-                    "description": "Oh no. Hopefully nothing went wrong..."
-                }
-            }
-        },
-        "modeSwitcher": {
-            "label": "Change dark mode",
-            "theme": "{theme, select, light {Light} dark {Dark} system {System} other {Unknown}}"
-        },
-        "themeSwitcher": {
-            "label": "Change theme",
-            "theme": "{theme, select, default {Default} palette {Palette} sapphire {Sapphire} ruby {Ruby} emerald {Emerald} coral {Coral} amber {Amber} amethyst {Amethyst} daylight {Daylight} midnight {Midnight} other {Unknown}}"
-        },
-        "localeSwitcher": {
-            "label": "Change language",
-            "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
-        },
-        "user": {
-            "signIn": "Sign in",
-            "signUp": "Sign up",
-            "signOut": "Sign out"
-        }
-    },
-    "authPages": {
-        "title": "Authentication",
-        "signIn": {
-            "title": "Login",
-            "explanation": "Enter your email below to login to your account",
-            "email": "Email",
-            "emailPlaceholder": "you@example.com",
-            "password": "Password",
-            "forgotPassword": "Forgot your password?",
-            "submit": "Sign in",
-            "pendingText": "Signing in...",
-            "noAccount": "Don't have an account?",
-            "noAccountLink": "Sign up"
-        },
-        "signUp": {
-            "title": "Register",
-            "explanation": "Enter your information below to create an account",
-            "firstName": "First name",
-            "firstNamePlaceholder": "Max",
-            "lastName": "Last name",
-            "lastNamePlaceholder": "Robinson",
-            "email": "Email",
-            "emailPlaceholder": "you@example.com",
-            "password": "Password",
-            "submit": "Create an account",
-            "pendingText": "Creating account...",
-            "haveAccount": "Already have an account?",
-            "haveAccountLink": "Sign in"
-        },
-        "forgotPassword": {
-            "title": "Reset Password",
-            "explanation": "Get a reset password link per email",
-            "email": "Email",
-            "emailPlaceholder": "you@example.com",
-            "submit": "Reset Password",
-            "pendingText": "Sending email...",
-            "haveAccount": "Already have an account?",
-            "haveAccountLink": "Sign in"
-        }
-    },
-    "dashboard": {
-        "title": "Dashboard"
-    },
-    "ingredients": {
+  "metadata": {
+    "title": "Batch Management System",
+    "companyName": "Richter gluten-free production company",
+    "type": "Enterprise"
+  },
+  "header": {
+    "navigation": {
+      "ingredients": {
         "title": "Ingredients",
         "overview": {
-            "title": "Overview",
-            "description": "Some statistics about ingredients in a dashboard"
+          "title": "Overview",
+          "description": "Some statistics about ingredients in a dashboard"
         },
         "list": {
-            "title": "List",
-            "description": "List all ingredients in a table view"
+          "title": "List",
+          "description": "List all ingredients in a table view"
         },
         "create": {
-            "title": "Create",
-            "description": "More ingredients give more options to recipes"
+          "title": "Create",
+          "description": "More ingredients give more options to recipes"
         },
         "edit": {
-            "title": "Edit",
-            "description": "Did you accidentally mistype something?"
+          "title": "Edit",
+          "description": "Did you accidentally mistype something?"
         }
-    },
-    "products": {
+      },
+      "products": {
         "title": "Products",
         "overview": {
-            "title": "Overview",
-            "description": "Some statistics about products in a dashboard"
+          "title": "Overview",
+          "description": "Some statistics about products in a dashboard"
         },
         "list": {
-            "title": "List",
-            "description": "List all products in a table view"
+          "title": "List",
+          "description": "List all products in a table view"
         },
         "create": {
-            "title": "Create",
-            "description": "More products give more options to recipes"
+          "title": "Create",
+          "description": "Produce something new"
         },
         "edit": {
-            "title": "Edit",
-            "description": "Did you accidentally mistype something?"
+          "title": "Edit",
+          "description": "Not enjoying the current product enough?"
         }
-    },
-    "recipes": {
+      },
+      "recipes": {
         "title": "Recipes",
         "overview": {
-            "title": "Overview",
-            "description": "Some statistics about recipes in a dashboard"
+          "title": "Overview",
+          "description": "Some statistics about recipes in a dashboard"
         },
         "list": {
-            "title": "List",
-            "description": "List all recipes in a table view"
+          "title": "List",
+          "description": "List all recipes in a table view"
         },
         "create": {
-            "title": "Create",
-            "description": "Every creation starts somewhere"
+          "title": "Create",
+          "description": "Every creation starts somewhere"
         },
         "edit": {
-            "title": "Edit",
-            "description": "Not satisfied with the current recipe?"
+          "title": "Edit",
+          "description": "Not satisfied with your current recipe?"
         }
-    },
-    "batches": {
+      },
+      "batches": {
         "title": "Batches",
         "overview": {
-            "title": "Overview",
-            "description": "Some statistics about batches in a dashboard"
+          "title": "Overview",
+          "description": "A basic overview of all the batches in a dashboard"
         },
         "list": {
-            "title": "List",
-            "description": "List all batches in a table view"
+          "title": "List",
+          "description": "List all batches in a table view"
         },
         "create": {
-            "title": "Create",
-            "description": "Every creation starts somewhere"
+          "title": "Create",
+          "description": "I hope you can count because we'll need a successor"
         },
         "edit": {
-            "title": "Edit",
-            "description": "Not satisfied with the current batch?"
+          "title": "Edit",
+          "description": "Oh no. Hopefully nothing went wrong..."
         }
+      }
     },
-    "legalMatters": {
-        "title": "Legal matters",
-        "imprint": {
-            "title": "Imprint"
-        }
+    "modeSwitcher": {
+      "label": "Change dark mode",
+      "theme": "{theme, select, light {Light} dark {Dark} system {System} other {Unknown}}"
+    },
+    "themeSwitcher": {
+      "label": "Change theme",
+      "theme": "{theme, select, default {Default} palette {Palette} sapphire {Sapphire} ruby {Ruby} emerald {Emerald} coral {Coral} amber {Amber} amethyst {Amethyst} daylight {Daylight} midnight {Midnight} other {Unknown}}"
+    },
+    "localeSwitcher": {
+      "label": "Change language",
+      "locale": "{locale, select, de {🇩🇪 Deutsch} en {🇺🇸 English} other {Unknown}}"
+    },
+    "user": {
+      "signIn": "Sign in",
+      "signUp": "Sign up",
+      "signOut": "Sign out"
     }
+  },
+  "authPages": {
+    "title": "Authentication",
+    "signIn": {
+      "title": "Login",
+      "explanation": "Enter your email below to login to your account",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "forgotPassword": "Forgot your password?",
+      "submit": "Sign in",
+      "pendingText": "Signing in...",
+      "noAccount": "Don't have an account?",
+      "noAccountLink": "Sign up"
+    },
+    "signUp": {
+      "title": "Register",
+      "explanation": "Enter your information below to create an account",
+      "firstName": "First name",
+      "firstNamePlaceholder": "Max",
+      "lastName": "Last name",
+      "lastNamePlaceholder": "Robinson",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "password": "Password",
+      "submit": "Create an account",
+      "pendingText": "Creating account...",
+      "haveAccount": "Already have an account?",
+      "haveAccountLink": "Sign in"
+    },
+    "forgotPassword": {
+      "title": "Reset Password",
+      "explanation": "Get a reset password link per email",
+      "email": "Email",
+      "emailPlaceholder": "you@example.com",
+      "submit": "Reset Password",
+      "pendingText": "Sending email...",
+      "haveAccount": "Already have an account?",
+      "haveAccountLink": "Sign in"
+    }
+  },
+  "dashboard": {
+    "title": "Dashboard"
+  },
+  "ingredients": {
+    "title": "Ingredients",
+    "overview": {
+      "title": "Overview",
+      "description": "Some statistics about ingredients in a dashboard"
+    },
+    "list": {
+      "title": "List",
+      "description": "List all ingredients in a table view"
+    },
+    "create": {
+      "title": "Create",
+      "description": "More ingredients give more options to recipes"
+    },
+    "edit": {
+      "title": "Edit",
+      "description": "Did you accidentally mistype something?"
+    }
+  },
+  "products": {
+    "title": "Products",
+    "overview": {
+      "title": "Overview",
+      "description": "Some statistics about products in a dashboard"
+    },
+    "list": {
+      "title": "List",
+      "description": "List all products in a table view"
+    },
+    "create": {
+      "title": "Create",
+      "description": "More products give more options to recipes"
+    },
+    "edit": {
+      "title": "Edit",
+      "description": "Did you accidentally mistype something?"
+    }
+  },
+  "recipes": {
+    "title": "Recipes",
+    "overview": {
+      "title": "Overview",
+      "description": "Some statistics about recipes in a dashboard"
+    },
+    "list": {
+      "title": "List",
+      "description": "List all recipes in a table view"
+    },
+    "create": {
+      "title": "Create",
+      "description": "Every creation starts somewhere"
+    },
+    "edit": {
+      "title": "Edit",
+      "description": "Not satisfied with the current recipe?"
+    }
+  },
+  "batches": {
+    "title": "Batches",
+    "overview": {
+      "title": "Overview",
+      "description": "Some statistics about batches in a dashboard"
+    },
+    "list": {
+      "title": "List",
+      "description": "List all batches in a table view"
+    },
+    "create": {
+      "title": "Create",
+      "description": "Every creation starts somewhere"
+    },
+    "edit": {
+      "title": "Edit",
+      "description": "Not satisfied with the current batch?"
+    }
+  },
+  "legalMatters": {
+    "title": "Legal matters",
+    "imprint": {
+      "title": "Imprint"
+    }
+  }
 }

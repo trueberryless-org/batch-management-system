@@ -5,34 +5,37 @@ import { manufacturedRecipeHasConstituents } from "./manufacturedRecipeHasConsti
 import { recipes } from "./recipes";
 
 export const manufacturedRecipes = pgTable("manufactured_recipes", {
-    id: uuid("id").primaryKey().defaultRandom(),
-    recipeId: uuid("id")
-        .notNull()
-        .references(() => recipes.id),
-    insertedAt: timestamp("inserted_at", {
-        mode: "date",
-        precision: 3,
-        withTimezone: false,
-    })
-        .notNull()
-        .defaultNow(),
-    updatedAt: timestamp("updated_at", {
-        mode: "date",
-        precision: 3,
-        withTimezone: false,
-    })
-        .notNull()
-        .defaultNow()
-        .$onUpdate(() => new Date()),
+  id: uuid("id").primaryKey().defaultRandom(),
+  recipeId: uuid("id")
+    .notNull()
+    .references(() => recipes.id),
+  insertedAt: timestamp("inserted_at", {
+    mode: "date",
+    precision: 3,
+    withTimezone: false,
+  })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", {
+    mode: "date",
+    precision: 3,
+    withTimezone: false,
+  })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
 });
 
-export const manufacturedRecipesRelations = relations(manufacturedRecipes, ({ one, many }) => ({
+export const manufacturedRecipesRelations = relations(
+  manufacturedRecipes,
+  ({ one, many }) => ({
     recipe: one(recipes, {
-        fields: [manufacturedRecipes.recipeId],
-        references: [recipes.id],
+      fields: [manufacturedRecipes.recipeId],
+      references: [recipes.id],
     }),
     manufacturedRecipeHasConstituents: many(manufacturedRecipeHasConstituents),
-}));
+  })
+);
 
 export type ManufacturedRecipe = typeof manufacturedRecipes.$inferSelect;
 export type NewManufacturedRecipe = typeof manufacturedRecipes.$inferInsert;
