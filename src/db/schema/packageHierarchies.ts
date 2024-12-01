@@ -6,7 +6,6 @@ import { palettes } from "./palettes";
 
 export const packageHierarchies = pgTable("package_hierarchies", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => packages.id, { onDelete: "cascade", onUpdate: "cascade" }),
     parentId: uuid("parent_id")

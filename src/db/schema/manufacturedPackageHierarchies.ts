@@ -4,7 +4,7 @@ import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 import { packageHierarchies } from "./packageHierarchies";
 
 export const manufacturedPackageHierarchies = pgTable("manufactured_package_hierarchies_bt", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     packageHierarchyId: uuid("id")
         .notNull()
         .references(() => packageHierarchies.id),

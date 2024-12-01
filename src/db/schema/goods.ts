@@ -8,7 +8,6 @@ export const goods = pgTable(
     "goods_bt",
     {
         id: uuid("id")
-            .notNull()
             .primaryKey()
             .references(() => constituents.id, { onDelete: "cascade", onUpdate: "cascade" }),
         currentRecipeId: uuid("current_recipe_id").references((): AnyPgColumn => recipes.id),

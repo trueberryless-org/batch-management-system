@@ -7,7 +7,6 @@ export const ingredients = pgTable(
     "ingredients",
     {
         id: uuid("id")
-            .notNull()
             .primaryKey()
             .references(() => constituents.id, { onDelete: "cascade", onUpdate: "cascade" }),
         number: text("number").notNull(),

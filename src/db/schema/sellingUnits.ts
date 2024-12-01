@@ -6,7 +6,6 @@ import { sellingUnitHierarchies } from "./sellingUnitHierarchies";
 
 export const sellingUnits = pgTable("selling_units", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => bundles.id, { onDelete: "cascade", onUpdate: "cascade" }),
     insertedAt: timestamp("inserted_at", {

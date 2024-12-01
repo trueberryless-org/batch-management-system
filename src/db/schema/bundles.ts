@@ -5,7 +5,7 @@ import { nestables } from "./nestables";
 import { sellingUnits } from "./sellingUnits";
 
 export const bundles = pgTable("bundles_bt", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     insertedAt: timestamp("inserted_at", {
         mode: "date",
         precision: 3,

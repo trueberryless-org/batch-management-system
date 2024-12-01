@@ -6,7 +6,6 @@ import { sellingUnits } from "./sellingUnits";
 
 export const sellingUnitHierarchies = pgTable("selling_unit_hierarchies", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => sellingUnits.id, { onDelete: "cascade", onUpdate: "cascade" }),
     parentId: uuid("parent_id")

@@ -5,7 +5,7 @@ import { constituents } from "./constituents";
 import { manufacturedRecipeHasConstituents } from "./manufacturedRecipeHasConstituents";
 
 export const manufacturedConstituents = pgTable("manufactured_constituents_bt", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     constituentId: uuid("id")
         .notNull()
         .references(() => constituents.id),

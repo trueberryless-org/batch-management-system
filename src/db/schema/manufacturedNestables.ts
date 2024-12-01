@@ -4,7 +4,7 @@ import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 import { nestables } from "./nestables";
 
 export const manufacturedNestables = pgTable("manufactured_nestables_bt", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     nestableId: uuid("id")
         .notNull()
         .references(() => nestables.id),

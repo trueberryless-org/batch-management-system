@@ -6,7 +6,6 @@ import { packageHierarchies } from "./packageHierarchies";
 
 export const packages = pgTable("packages", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => nestables.id, { onDelete: "cascade", onUpdate: "cascade" }),
     insertedAt: timestamp("inserted_at", {

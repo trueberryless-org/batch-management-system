@@ -7,12 +7,14 @@ import { manufacturedRecipes } from "./manufacturedRecipes";
 export const manufacturedRecipeHasConstituents = pgTable(
     "manufactured_recipe_has_constituents_jt",
     {
-        manufacturedConstituentId: uuid("manufactured_constituent_id")
-            .notNull()
-            .references(() => manufacturedConstituents.id, { onDelete: "cascade", onUpdate: "cascade" }),
-        manufacturedRecipeId: uuid("manufactured_recipe_id")
-            .notNull()
-            .references(() => manufacturedRecipes.id, { onDelete: "cascade", onUpdate: "cascade" }),
+        manufacturedConstituentId: uuid("manufactured_constituent_id").references(() => manufacturedConstituents.id, {
+            onDelete: "cascade",
+            onUpdate: "cascade",
+        }),
+        manufacturedRecipeId: uuid("manufactured_recipe_id").references(() => manufacturedRecipes.id, {
+            onDelete: "cascade",
+            onUpdate: "cascade",
+        }),
         insertedAt: timestamp("inserted_at", {
             mode: "date",
             precision: 3,
@@ -30,7 +32,7 @@ export const manufacturedRecipeHasConstituents = pgTable(
             .$onUpdate(() => new Date()),
     },
     (table) => ({
-        pk: primaryKey(table.manufacturedConstituentId, table.manufacturedRecipeId),
+        pk: primaryKey({ columns: [table.manufacturedConstituentId, table.manufacturedRecipeId] }),
     }),
 );
 

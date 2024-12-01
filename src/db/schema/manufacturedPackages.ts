@@ -4,7 +4,7 @@ import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 import { packages } from "./packages";
 
 export const manufacturedPackages = pgTable("manufactured_packages", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     packageId: uuid("id")
         .notNull()
         .references(() => packages.id),

@@ -8,7 +8,6 @@ import { sellingUnitHierarchies } from "./sellingUnitHierarchies";
 
 export const nestables = pgTable("nestables_bt", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => bundles.id, { onDelete: "cascade", onUpdate: "cascade" }),
     insertedAt: timestamp("inserted_at", {

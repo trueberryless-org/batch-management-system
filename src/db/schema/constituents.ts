@@ -6,7 +6,7 @@ import { ingredients } from "./ingredients";
 import { recipeHasConstituents } from "./recipeHasConstituents";
 
 export const constituents = pgTable("constituents_bt", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     insertedAt: timestamp("inserted_at", {
         mode: "date",
         precision: 3,

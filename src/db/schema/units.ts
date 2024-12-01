@@ -6,7 +6,7 @@ import { products } from "./products";
 import { unitConversions } from "./unitConversions";
 
 export const units = pgTable("units", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     symbol: text("symbol").notNull(),
     label: text("label").notNull(),
     insertedAt: timestamp("inserted_at", {

@@ -5,7 +5,7 @@ import { goods } from "./goods";
 import { recipeHasConstituents } from "./recipeHasConstituents";
 
 export const recipes = pgTable("recipes", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     name: text("name"),
     goodId: uuid("good_id")
         .notNull()

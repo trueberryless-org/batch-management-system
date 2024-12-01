@@ -5,7 +5,6 @@ import { batches } from "./batches";
 
 export const manufacturedBatches = pgTable("manufactured_batches", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => batches.id, { onDelete: "cascade", onUpdate: "cascade" }),
     manufacturedOn: date("manufactured_on").notNull().defaultNow(),

@@ -11,7 +11,6 @@ const authUsers = authSchema.table("users", {
 
 export const users = pgTable("users", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => authUsers.id),
     insertedAt: timestamp("inserted_at", {

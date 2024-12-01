@@ -6,7 +6,6 @@ import { rawMaterials } from "./rawMaterials";
 
 export const receivedBatches = pgTable("received_batches", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => batches.id, { onDelete: "cascade", onUpdate: "cascade" }),
     deliveredOn: date("delivered_on").notNull().defaultNow(),

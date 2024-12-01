@@ -1,7 +1,7 @@
 import { integer, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 
 export const configurations = pgTable("configurations", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     version: integer("version").notNull(),
     insertedAt: timestamp("inserted_at", {
         mode: "date",

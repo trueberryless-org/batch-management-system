@@ -4,7 +4,7 @@ import { pgTable, text, timestamp, uuid } from "drizzle-orm/pg-core";
 import { users } from "./users";
 
 export const settings = pgTable("settings", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     userId: uuid("user_id")
         .notNull()
         .references(() => users.id, { onDelete: "cascade", onUpdate: "cascade" }),

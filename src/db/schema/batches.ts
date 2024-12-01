@@ -4,7 +4,7 @@ import { date, doublePrecision, pgTable, text, timestamp, uuid } from "drizzle-o
 import { sellingUnits } from "./sellingUnits";
 
 export const batches = pgTable("batches_bt", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     number: text("number").notNull(),
     expiresOn: date("expires_on")
         .notNull()

@@ -7,7 +7,7 @@ import { receivedBatches } from "./receivedBatches";
 export const rawMaterials = pgTable(
     "raw_materials",
     {
-        id: uuid("id").notNull().primaryKey().defaultRandom(),
+        id: uuid("id").primaryKey().defaultRandom(),
         ingredientId: uuid("ingredient_id")
             .notNull()
             .references(() => ingredients.id, { onDelete: "cascade", onUpdate: "cascade" }),

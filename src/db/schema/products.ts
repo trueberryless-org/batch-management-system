@@ -6,7 +6,6 @@ import { recipes } from "./recipes";
 
 export const products = pgTable("products", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => goods.id, { onDelete: "cascade", onUpdate: "cascade" }),
     isActive: boolean("is_active").notNull().default(true),

@@ -6,7 +6,6 @@ import { recipes } from "./recipes";
 
 export const doughs = pgTable("doughs", {
     id: uuid("id")
-        .notNull()
         .primaryKey()
         .references(() => goods.id, { onDelete: "cascade", onUpdate: "cascade" }),
     insertedAt: timestamp("inserted_at", {

@@ -4,7 +4,7 @@ import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
 import { sellingUnitHierarchies } from "./sellingUnitHierarchies";
 
 export const manufacturedSellingUnitHierarchies = pgTable("manufactured_selling_unit_hierarchies_bt", {
-    id: uuid("id").notNull().primaryKey().defaultRandom(),
+    id: uuid("id").primaryKey().defaultRandom(),
     sellingUnitHierarchyId: uuid("id")
         .notNull()
         .references(() => sellingUnitHierarchies.id),
