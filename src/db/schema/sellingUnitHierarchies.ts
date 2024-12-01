@@ -5,39 +5,49 @@ import { nestables } from "./nestables";
 import { sellingUnits } from "./sellingUnits";
 
 export const sellingUnitHierarchies = pgTable("selling_unit_hierarchies", {
-    id: uuid("id")
-        .primaryKey()
-        .references(() => sellingUnits.id, { onDelete: "cascade", onUpdate: "cascade" }),
-    parentId: uuid("parent_id")
-        .notNull()
-        .references(() => nestables.id, { onDelete: "cascade", onUpdate: "cascade" }),
-    insertedAt: timestamp("inserted_at", {
-        mode: "date",
-        precision: 3,
-        withTimezone: false,
-    })
-        .notNull()
-        .defaultNow(),
-    updatedAt: timestamp("updated_at", {
-        mode: "date",
-        precision: 3,
-        withTimezone: false,
-    })
-        .notNull()
-        .defaultNow()
-        .$onUpdate(() => new Date()),
+  id: uuid("id")
+    .primaryKey()
+    .references(() => sellingUnits.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
+  parentId: uuid("parent_id")
+    .notNull()
+    .references(() => nestables.id, {
+      onDelete: "cascade",
+      onUpdate: "cascade",
+    }),
+  insertedAt: timestamp("inserted_at", {
+    mode: "date",
+    precision: 3,
+    withTimezone: false,
+  })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", {
+    mode: "date",
+    precision: 3,
+    withTimezone: false,
+  })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
 });
 
-export const sellingUnitHierarchiesRelations = relations(sellingUnitHierarchies, ({ one, many }) => ({
+export const sellingUnitHierarchiesRelations = relations(
+  sellingUnitHierarchies,
+  ({ one, many }) => ({
     sellingUnit: one(sellingUnits, {
-        fields: [sellingUnitHierarchies.id],
-        references: [sellingUnits.id],
+      fields: [sellingUnitHierarchies.id],
+      references: [sellingUnits.id],
     }),
     parent: one(nestables, {
-        fields: [sellingUnitHierarchies.parentId],
-        references: [nestables.id],
+      fields: [sellingUnitHierarchies.parentId],
+      references: [nestables.id],
     }),
-}));
+  })
+);
 
 export type SellingUnitHierarchy = typeof sellingUnitHierarchies.$inferSelect;
-export type NewSellingUnitHierarchy = typeof sellingUnitHierarchies.$inferInsert;
+export type NewSellingUnitHierarchy =
+  typeof sellingUnitHierarchies.$inferInsert;

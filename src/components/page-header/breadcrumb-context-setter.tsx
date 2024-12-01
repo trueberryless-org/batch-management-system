@@ -2,14 +2,21 @@
 
 import { useEffect } from "react";
 
-import { BreadcrumbItem, useBreadcrumb } from "@/components/page-header/breadcrumb-context";
+import {
+  BreadcrumbItem,
+  useBreadcrumb,
+} from "@/components/page-header/breadcrumb-context";
 
-export default function BreadcrumbContextSetter({ breadcrumbItems }: { breadcrumbItems: BreadcrumbItem[] }) {
-    const { setBreadcrumbItems } = useBreadcrumb();
+export default function BreadcrumbContextSetter({
+  breadcrumbItems,
+}: {
+  breadcrumbItems: BreadcrumbItem[];
+}) {
+  const { setBreadcrumbItems } = useBreadcrumb();
 
-    useEffect(() => {
-        setBreadcrumbItems(breadcrumbItems);
-    }, [setBreadcrumbItems]);
+  useEffect(() => {
+    setBreadcrumbItems(breadcrumbItems);
+  }, [setBreadcrumbItems]);
 
-    return null;
+  return null;
 }

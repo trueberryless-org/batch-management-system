@@ -5,14 +5,16 @@ import BreadcrumbContextSetter from "@/components/page-header/breadcrumb-context
 import { BreadcrumbItemType } from "@/components/page-header/breadcrumb-navigator";
 
 export default function Index() {
-    const t = useTranslations("dashboard");
+  const t = useTranslations("dashboard");
 
-    const breadcrumbItems: BreadcrumbItemType[] = [{ name: t("title"), isLast: true }];
+  const breadcrumbItems: BreadcrumbItemType[] = [
+    { name: t("title"), isLast: true },
+  ];
 
-    return (
-        <>
-            <BreadcrumbContextSetter breadcrumbItems={breadcrumbItems} />
-            <Hero />
-        </>
-    );
+  return (
+    <>
+      <BreadcrumbContextSetter breadcrumbItems={breadcrumbItems} />
+      <Hero />
+    </>
+  );
 }

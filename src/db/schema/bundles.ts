@@ -5,27 +5,27 @@ import { nestables } from "./nestables";
 import { sellingUnits } from "./sellingUnits";
 
 export const bundles = pgTable("bundles_bt", {
-    id: uuid("id").primaryKey().defaultRandom(),
-    insertedAt: timestamp("inserted_at", {
-        mode: "date",
-        precision: 3,
-        withTimezone: false,
-    })
-        .notNull()
-        .defaultNow(),
-    updatedAt: timestamp("updated_at", {
-        mode: "date",
-        precision: 3,
-        withTimezone: false,
-    })
-        .notNull()
-        .defaultNow()
-        .$onUpdate(() => new Date()),
+  id: uuid("id").primaryKey().defaultRandom(),
+  insertedAt: timestamp("inserted_at", {
+    mode: "date",
+    precision: 3,
+    withTimezone: false,
+  })
+    .notNull()
+    .defaultNow(),
+  updatedAt: timestamp("updated_at", {
+    mode: "date",
+    precision: 3,
+    withTimezone: false,
+  })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
 });
 
 export const bundlesRelations = relations(bundles, ({ one, many }) => ({
-    sellingUnit: one(sellingUnits),
-    nestable: one(nestables),
+  sellingUnit: one(sellingUnits),
+  nestable: one(nestables),
 }));
 
 export type Bundle = typeof bundles.$inferSelect;
