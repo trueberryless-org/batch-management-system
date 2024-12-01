@@ -1,34 +1,38 @@
-import { relations } from "drizzle-orm";
-import { pgSchema, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
+import { relations, sql } from "drizzle-orm";
+import { foreignKey, pgPolicy, pgSchema, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
+import { authUsers, authenticatedRole } from "drizzle-orm/supabase";
 
 import { settings } from "./settings";
 
-const authSchema = pgSchema("auth");
-
-const authUsers = authSchema.table("users", {
-    id: uuid("id").primaryKey(),
-});
-
-export const users = pgTable("users", {
-    id: uuid("id")
-        .primaryKey()
-        .references(() => authUsers.id),
-    insertedAt: timestamp("inserted_at", {
-        mode: "date",
-        precision: 3,
-        withTimezone: false,
-    })
-        .notNull()
-        .defaultNow(),
-    updatedAt: timestamp("updated_at", {
-        mode: "date",
-        precision: 3,
-        withTimezone: false,
-    })
-        .notNull()
-        .defaultNow()
-        .$onUpdate(() => new Date()),
-});
+export const users = pgTable(
+    "users",
+    {
+        id: uuid("id").primaryKey().notNull(),
+        insertedAt: timestamp("inserted_at", {
+            mode: "date",
+            precision: 3,
+            withTimezone: false,
+        })
+            .notNull()
+            .defaultNow(),
+        updatedAt: timestamp("updated_at", {
+            mode: "date",
+            precision: 3,
+            withTimezone: false,
+        })
+            .notNull()
+            .defaultNow()
+            .$onUpdate(() => new Date()),
+    },
+    (table) => [
+        foreignKey({
+            columns: [table.id],
+            // reference to the auth table from Supabase
+            foreignColumns: [authUsers.id],
+            name: "users_id_fk",
+        }).onDelete("cascade"),
+    ],
+).enableRLS();
 
 export const usersRelations = relations(users, ({ one, many }) => ({
     user: one(authUsers, {
