@@ -31,6 +31,7 @@ export const manufacturedBatchesRelations = relations(
     batch: one(batches, {
       fields: [manufacturedBatches.id],
       references: [batches.id],
+      relationName: "man_bat_fk_bat_bt",
     }),
   })
 );

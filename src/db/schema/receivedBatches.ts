@@ -32,6 +32,7 @@ export const receivedBatchesRelations = relations(
     batch: one(batches, {
       fields: [receivedBatches.id],
       references: [batches.id],
+      relationName: "rec_bat_fk_bat_bt",
     }),
     rawMaterials: many(rawMaterials),
   })

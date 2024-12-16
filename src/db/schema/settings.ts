@@ -31,6 +31,7 @@ export const settingsRelations = relations(settings, ({ one }) => ({
   user: one(users, {
     fields: [settings.userId],
     references: [users.id],
+    relationName: "set_fk_use",
   }),
 }));
 

@@ -43,7 +43,7 @@ export const ingredients = pgTable(
       .$onUpdate(() => new Date()),
   },
   (t) => ({
-    unq: unique().on(t.number),
+    unq: unique("ing_num_uq").on(t.number),
   })
 );
 
@@ -51,6 +51,7 @@ export const ingredientsRelations = relations(ingredients, ({ one, many }) => ({
   constituent: one(constituents, {
     fields: [ingredients.id],
     references: [constituents.id],
+    relationName: "ing_fk_con_bt",
   }),
 }));
 

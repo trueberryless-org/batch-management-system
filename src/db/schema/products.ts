@@ -37,6 +37,7 @@ export const productsRelations = relations(products, ({ one, many }) => ({
   good: one(goods, {
     fields: [products.id],
     references: [goods.id],
+    relationName: "pro_fk_goo_bt",
   }),
 }));
 

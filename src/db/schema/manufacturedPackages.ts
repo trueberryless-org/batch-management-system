@@ -31,6 +31,7 @@ export const manufacturedPackagesRelations = relations(
     package: one(packages, {
       fields: [manufacturedPackages.packageId],
       references: [packages.id],
+      relationName: "man_pac_fk_pac",
     }),
   })
 );

@@ -31,6 +31,7 @@ export const manufacturedSellingUnitsRelations = relations(
     sellingUnit: one(sellingUnits, {
       fields: [manufacturedSellingUnits.sellingUnitId],
       references: [sellingUnits.id],
+      relationName: "man_sel_uni_fk_sel_uni",
     }),
   })
 );

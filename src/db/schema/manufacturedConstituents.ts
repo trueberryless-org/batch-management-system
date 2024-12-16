@@ -35,6 +35,7 @@ export const manufacturedConstituentsRelations = relations(
     constituent: one(constituents, {
       fields: [manufacturedConstituents.constituentId],
       references: [constituents.id],
+      relationName: "man_con_bt_fk_con_bt",
     }),
     manufacturedRecipeHasConstituents: many(manufacturedRecipeHasConstituents),
   })

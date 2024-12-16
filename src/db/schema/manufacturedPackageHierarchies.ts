@@ -34,6 +34,7 @@ export const manufacturedPackageHierarchiesRelations = relations(
     packageHierarchy: one(packageHierarchies, {
       fields: [manufacturedPackageHierarchies.packageHierarchyId],
       references: [packageHierarchies.id],
+      relationName: "man_pac_hie_bt_fk_pac_hie",
     }),
   })
 );

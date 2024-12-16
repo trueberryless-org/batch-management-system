@@ -29,6 +29,7 @@ export const doughsRelations = relations(doughs, ({ one }) => ({
   good: one(goods, {
     fields: [doughs.id],
     references: [goods.id],
+    relationName: "dou_fk_goo_bt",
   }),
 }));
 

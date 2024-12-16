@@ -32,6 +32,7 @@ export const packagesRelations = relations(packages, ({ one, many }) => ({
   nestable: one(nestables, {
     fields: [packages.id],
     references: [nestables.id],
+    relationName: "pac_fk_nes_bt",
   }),
   hierarchy: one(packageHierarchies),
 }));

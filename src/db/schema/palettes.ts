@@ -32,6 +32,7 @@ export const palettesRelations = relations(palettes, ({ one, many }) => ({
   nestable: one(nestables, {
     fields: [palettes.id],
     references: [nestables.id],
+    relationName: "pal_fk_nes_bt",
   }),
   children: many(packageHierarchies),
 }));

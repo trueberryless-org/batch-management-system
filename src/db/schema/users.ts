@@ -36,7 +36,7 @@ export const users = pgTable(
       columns: [table.id],
       // reference to the auth table from Supabase
       foreignColumns: [authUsers.id],
-      name: "users_id_fk",
+      name: "use_fk",
     }).onDelete("cascade"),
   ]
 ).enableRLS();
@@ -45,6 +45,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   user: one(authUsers, {
     fields: [users.id],
     references: [authUsers.id],
+    relationName: "use_fk_aut_use",
   }),
   settings: many(settings),
 }));
