@@ -31,6 +31,7 @@ export const manufacturedProductsRelations = relations(
     product: one(products, {
       fields: [manufacturedProducts.productId],
       references: [products.id],
+      relationName: "man_pro_fk_pro",
     }),
   })
 );

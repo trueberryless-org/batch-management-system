@@ -40,7 +40,10 @@ export const unitConversions = pgTable(
       .$onUpdate(() => new Date()),
   },
   (table) => ({
-    pk: primaryKey({ columns: [table.fromUnitId, table.toUnitId] }),
+    pk: primaryKey({
+      name: "uni_con_jt_pk",
+      columns: [table.fromUnitId, table.toUnitId],
+    }),
   })
 );
 
@@ -50,12 +53,12 @@ export const unitConversionsRelations = relations(
     fromUnit: one(units, {
       fields: [unitConversions.fromUnitId],
       references: [units.id],
-      relationName: "fromUnit",
+      relationName: "uni_con_jt_fk_from_unit",
     }),
     toUnit: one(units, {
       fields: [unitConversions.toUnitId],
       references: [units.id],
-      relationName: "toUnit",
+      relationName: "uni_con_jt_fk_to_unit",
     }),
   })
 );

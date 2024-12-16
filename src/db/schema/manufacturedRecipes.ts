@@ -32,6 +32,7 @@ export const manufacturedRecipesRelations = relations(
     recipe: one(recipes, {
       fields: [manufacturedRecipes.recipeId],
       references: [recipes.id],
+      relationName: "man_rec_fk_rec",
     }),
     manufacturedRecipeHasConstituents: many(manufacturedRecipeHasConstituents),
   })

@@ -31,6 +31,7 @@ export const sellingUnitsRelations = relations(
     bundle: one(bundles, {
       fields: [sellingUnits.id],
       references: [bundles.id],
+      relationName: "sel_uni_fk_bun_bt",
     }),
     hierarchy: one(sellingUnitHierarchies),
   })

@@ -34,6 +34,7 @@ export const manufacturedSellingUnitHierarchiesRelations = relations(
     sellingUnitHierarchy: one(sellingUnitHierarchies, {
       fields: [manufacturedSellingUnitHierarchies.sellingUnitHierarchyId],
       references: [sellingUnitHierarchies.id],
+      relationName: "man_sel_uni_hie_bt_fk_sel_uni_hie",
     }),
   })
 );

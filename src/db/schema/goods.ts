@@ -41,7 +41,7 @@ export const goods = pgTable(
       .$onUpdate(() => new Date()),
   },
   (t) => ({
-    unq: unique().on(t.number),
+    unq: unique("goo_bt_num_uq").on(t.number),
   })
 );
 
@@ -49,10 +49,12 @@ export const goodsRelations = relations(goods, ({ one, many }) => ({
   constituent: one(constituents, {
     fields: [goods.id],
     references: [constituents.id],
+    relationName: "goo_bt_fk_con_bt",
   }),
   currentRecipe: one(recipes, {
     fields: [goods.currentRecipeId],
     references: [recipes.id],
+    relationName: "goo_bt_fk_rec",
   }),
   recipes: many(recipes),
 }));

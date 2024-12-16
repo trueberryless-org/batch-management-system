@@ -40,10 +40,12 @@ export const sellingUnitHierarchiesRelations = relations(
     sellingUnit: one(sellingUnits, {
       fields: [sellingUnitHierarchies.id],
       references: [sellingUnits.id],
+      relationName: "sel_uni_hie_fk_sel_uni",
     }),
     parent: one(nestables, {
       fields: [sellingUnitHierarchies.parentId],
       references: [nestables.id],
+      relationName: "sel_uni_hie_fk_nes_bt",
     }),
   })
 );

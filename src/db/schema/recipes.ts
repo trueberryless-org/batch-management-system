@@ -45,11 +45,13 @@ export const recipesRelations = relations(recipes, ({ one, many }) => ({
   good: one(goods, {
     fields: [recipes.goodId],
     references: [goods.id],
+    relationName: "rec_fk_goo_bt",
   }),
   recipeHasConstituents: many(recipeHasConstituents),
   predecessors: one(recipes, {
     fields: [recipes.predecessorId],
     references: [recipes.id],
+    relationName: "rec_fk_rec",
   }),
   successors: many(recipes),
 }));

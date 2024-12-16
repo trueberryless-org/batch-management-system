@@ -31,6 +31,7 @@ export const manufacturedGoodsRelations = relations(
     good: one(goods, {
       fields: [manufacturedGoods.goodId],
       references: [goods.id],
+      relationName: "man_goo_bt_goo_bt",
     }),
   })
 );

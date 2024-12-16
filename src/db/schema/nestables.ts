@@ -31,6 +31,7 @@ export const nestablesRelations = relations(nestables, ({ one, many }) => ({
   bundle: one(bundles, {
     fields: [nestables.id],
     references: [bundles.id],
+    relationName: "nes_bt_fk_bun_bt",
   }),
   package: one(packages),
   palette: one(palettes),

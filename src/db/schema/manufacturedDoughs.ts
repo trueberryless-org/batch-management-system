@@ -31,6 +31,7 @@ export const manufacturedDoughsRelations = relations(
     dough: one(doughs, {
       fields: [manufacturedDoughs.doughId],
       references: [doughs.id],
+      relationName: "man_dou_fk_dou",
     }),
   })
 );

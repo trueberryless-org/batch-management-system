@@ -32,7 +32,10 @@ export const recipeHasConstituents = pgTable(
       .$onUpdate(() => new Date()),
   },
   (table) => ({
-    pk: primaryKey({ columns: [table.constituentId, table.recipeId] }),
+    pk: primaryKey({
+      name: "rec_has_con_jt_pk",
+      columns: [table.constituentId, table.recipeId],
+    }),
   })
 );
 
@@ -42,10 +45,12 @@ export const recipeHasConstituentsRelations = relations(
     constituent: one(constituents, {
       fields: [recipeHasConstituents.constituentId],
       references: [constituents.id],
+      relationName: "rec_has_con_jt_fk_con_bt",
     }),
     recipe: one(recipes, {
       fields: [recipeHasConstituents.recipeId],
       references: [recipes.id],
+      relationName: "rec_has_con_jt_fk_rec",
     }),
   })
 );

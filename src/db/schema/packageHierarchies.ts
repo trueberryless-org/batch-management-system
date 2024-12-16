@@ -40,10 +40,12 @@ export const packageHierarchiesRelations = relations(
     package: one(packages, {
       fields: [packageHierarchies.id],
       references: [packages.id],
+      relationName: "pac_hie_fk_pac",
     }),
     parent: one(palettes, {
       fields: [packageHierarchies.parentId],
       references: [palettes.id],
+      relationName: "pac_hie_fk_pal",
     }),
   })
 );

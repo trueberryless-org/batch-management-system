@@ -49,7 +49,7 @@ export const rawMaterials = pgTable(
       .$onUpdate(() => new Date()),
   },
   (t) => ({
-    unq: unique().on(t.number),
+    unq: unique("raw_mat_num_uq").on(t.number),
   })
 );
 
@@ -57,10 +57,12 @@ export const rawMaterialsRelations = relations(rawMaterials, ({ one }) => ({
   ingredient: one(ingredients, {
     fields: [rawMaterials.ingredientId],
     references: [ingredients.id],
+    relationName: "raw_mat_fk_ing",
   }),
   batch: one(receivedBatches, {
     fields: [rawMaterials.batchId],
     references: [receivedBatches.id],
+    relationName: "raw_mat_fk_rec_bat",
   }),
 }));
 

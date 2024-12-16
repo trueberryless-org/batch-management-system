@@ -31,6 +31,7 @@ export const manufacturedNestablesRelations = relations(
     nestable: one(nestables, {
       fields: [manufacturedNestables.nestableId],
       references: [nestables.id],
+      relationName: "man_nes_bt_fk_nes_bt",
     }),
   })
 );

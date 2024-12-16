@@ -31,6 +31,7 @@ export const manufacturedBundlesRelations = relations(
     bundle: one(bundles, {
       fields: [manufacturedBundles.bundleId],
       references: [bundles.id],
+      relationName: "man_bun_bt_fk_bun_bt",
     }),
   })
 );
