@@ -17,7 +17,9 @@ export const goods = pgTable(
   "goods_bt",
   {
     id: uuid("id"),
-    currentRecipeId: uuid("current_recipe_id"),
+    currentRecipeId: uuid("current_recipe_id").references(
+      (): AnyPgColumn => recipes.id
+    ),
     number: text("number").notNull(),
     insertedAt: timestamp("inserted_at", {
       mode: "date",
@@ -44,11 +46,6 @@ export const goods = pgTable(
       name: "fk_goo_bt_con_bt",
       columns: [table.id],
       foreignColumns: [constituents.id],
-    }),
-    fkRec: foreignKey({
-      name: "fk_goo_bt_rec",
-      columns: [table.currentRecipeId],
-      foreignColumns: [recipes.id],
     }),
     unq: unique("goo_bt_num_uq").on(table.number),
   })

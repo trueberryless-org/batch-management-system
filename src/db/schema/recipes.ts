@@ -17,13 +17,7 @@ export const recipes = pgTable(
   {
     id: uuid("id").primaryKey().defaultRandom(),
     name: text("name"),
-    goodId: uuid("good_id").notNull().references(
-      (): AnyPgColumn => goods.id,
-      {
-        onDelete: "set default",
-        onUpdate: "set default",
-      }
-    ),,
+    goodId: uuid("good_id").notNull(),
     predecessorId: uuid("predecessor_id").references(
       (): AnyPgColumn => recipes.id,
       {
@@ -48,6 +42,13 @@ export const recipes = pgTable(
       .$onUpdate(() => new Date()),
   },
   (table) => ({
+    fkGooBt: foreignKey({
+      name: "fk_rec_goo_bt",
+      columns: [table.goodId],
+      foreignColumns: [goods.id],
+    })
+      .onDelete("cascade")
+      .onUpdate("cascade"),
   })
 );
 

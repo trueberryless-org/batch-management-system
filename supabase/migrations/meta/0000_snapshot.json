@@ -1,5 +1,5 @@
 {
-  "id": "c6abe237-ecfa-47d4-9fa5-d352dd6c85a8",
+  "id": "33af6620-77b0-4a04-b4fa-0b0f3fb517c8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -257,9 +257,51 @@
         }
       },
       "indexes": {},
-      "foreignKeys": {},
-      "compositePrimaryKeys": {},
-      "uniqueConstraints": {},
+      "foreignKeys": {
+        "goods_bt_current_recipe_id_recipes_id_fk": {
+          "name": "goods_bt_current_recipe_id_recipes_id_fk",
+          "tableFrom": "goods_bt",
+          "tableTo": "recipes",
+          "columnsFrom": [
+            "current_recipe_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "fk_goo_bt_con_bt": {
+          "name": "fk_goo_bt_con_bt",
+          "tableFrom": "goods_bt",
+          "tableTo": "constituents_bt",
+          "columnsFrom": [
+            "id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {
+        "goo_bt_pk": {
+          "name": "goo_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
+      "uniqueConstraints": {
+        "goo_bt_num_uq": {
+          "name": "goo_bt_num_uq",
+          "nullsNotDistinct": false,
+          "columns": [
+            "number"
+          ]
+        }
+      },
       "policies": {},
       "checkConstraints": {},
       "isRLSEnabled": false
@@ -1633,8 +1675,8 @@
           "columnsTo": [
             "id"
           ],
-          "onDelete": "no action",
-          "onUpdate": "no action"
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
         }
       },
       "compositePrimaryKeys": {},

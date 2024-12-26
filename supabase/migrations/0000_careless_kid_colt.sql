@@ -38,7 +38,9 @@ CREATE TABLE IF NOT EXISTS "goods_bt" (
 	"current_recipe_id" uuid,
 	"number" text NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "goo_bt_pk" PRIMARY KEY("id"),
+	CONSTRAINT "goo_bt_num_uq" UNIQUE("number")
 );
 
 CREATE TABLE IF NOT EXISTS "ingredients" (
@@ -267,6 +269,18 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
+ ALTER TABLE "goods_bt" ADD CONSTRAINT "goods_bt_current_recipe_id_recipes_id_fk" FOREIGN KEY ("current_recipe_id") REFERENCES "public"."recipes"("id") ON DELETE no action ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+ ALTER TABLE "goods_bt" ADD CONSTRAINT "fk_goo_bt_con_bt" FOREIGN KEY ("id") REFERENCES "public"."constituents_bt"("id") ON DELETE no action ON UPDATE no action;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
  ALTER TABLE "ingredients" ADD CONSTRAINT "ingredients_id_constituents_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."constituents_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
@@ -435,7 +449,7 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "recipes" ADD CONSTRAINT "fk_rec_goo_bt" FOREIGN KEY ("good_id") REFERENCES "public"."goods_bt"("id") ON DELETE no action ON UPDATE no action;
+ ALTER TABLE "recipes" ADD CONSTRAINT "fk_rec_goo_bt" FOREIGN KEY ("good_id") REFERENCES "public"."goods_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
