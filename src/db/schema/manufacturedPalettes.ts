@@ -31,6 +31,7 @@ export const manufacturedPalettesRelations = relations(
     palette: one(palettes, {
       fields: [manufacturedPalettes.paletteId],
       references: [palettes.id],
+      relationName: "man_pal_fk_pal"
     }),
   })
 );
