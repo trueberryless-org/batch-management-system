@@ -1,6 +1,7 @@
 import { relations } from "drizzle-orm";
 import {
   doublePrecision,
+  foreignKey,
   pgTable,
   primaryKey,
   text,
@@ -13,14 +14,8 @@ import { units } from "./units";
 export const unitConversions = pgTable(
   "unit_conversions_jt",
   {
-    fromUnitId: uuid("from_unit_id").references(() => units.id, {
-      onDelete: "cascade",
-      onUpdate: "cascade",
-    }),
-    toUnitId: uuid("to_unit_id").references(() => units.id, {
-      onDelete: "cascade",
-      onUpdate: "cascade",
-    }),
+    fromUnitId: uuid("from_unit_id"),
+    toUnitId: uuid("to_unit_id"),
     conversionFactor: doublePrecision("conversion_factor").notNull(),
     description: text("description"),
     insertedAt: timestamp("inserted_at", {
@@ -43,6 +38,18 @@ export const unitConversions = pgTable(
     pk: primaryKey({
       name: "uni_con_jt_pk",
       columns: [table.fromUnitId, table.toUnitId],
+    }),
+    fkFroUni: foreignKey({
+      name: "fk_uni_con_jt_fro_uni",
+      columns: [table.fromUnitId],
+      foreignColumns: [units.id],
+    })
+      .onDelete("cascade")
+      .onUpdate("cascade"),
+    fkToUni: foreignKey({
+      name: "fk_uni_con_jt_to_uni",
+      columns: [table.toUnitId],
+      foreignColumns: [units.id],
     }),
   })
 );

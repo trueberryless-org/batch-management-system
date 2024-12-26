@@ -1,5 +1,5 @@
 {
-  "id": "33af6620-77b0-4a04-b4fa-0b0f3fb517c8",
+  "id": "f4e484aa-4f85-4013-863d-56d12cb17d17",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "7",
   "dialect": "postgresql",
@@ -11,9 +11,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "number": {
           "name": "number",
@@ -51,7 +50,14 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "bat_bt_pk": {
+          "name": "bat_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -64,9 +70,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "inserted_at": {
           "name": "inserted_at",
@@ -85,7 +90,14 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "bun_bt_pk": {
+          "name": "bun_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -98,9 +110,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "version": {
           "name": "version",
@@ -125,7 +136,14 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "con_pk": {
+          "name": "con_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -138,9 +156,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "inserted_at": {
           "name": "inserted_at",
@@ -159,7 +176,14 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "con_bt_pk": {
+          "name": "con_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -313,8 +337,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "number": {
           "name": "number",
@@ -379,8 +403,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "ingredients_id_constituents_bt_id_fk": {
-          "name": "ingredients_id_constituents_bt_id_fk",
+        "fk_ing_con_bt": {
+          "name": "fk_ing_con_bt",
           "tableFrom": "ingredients",
           "tableTo": "constituents_bt",
           "columnsFrom": [
@@ -393,7 +417,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "ing_pk": {
+          "name": "ing_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {
         "ing_num_uq": {
           "name": "ing_num_uq",
@@ -414,8 +445,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "manufactured_on": {
           "name": "manufactured_on",
@@ -441,8 +472,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "manufactured_batches_id_batches_bt_id_fk": {
-          "name": "manufactured_batches_id_batches_bt_id_fk",
+        "fk_man_bat_bat_bt": {
+          "name": "fk_man_bat_bat_bt",
           "tableFrom": "manufactured_batches",
           "tableTo": "batches_bt",
           "columnsFrom": [
@@ -455,7 +486,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_bat_pk": {
+          "name": "man_bat_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -468,9 +506,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "bundle_id": {
           "name": "bundle_id",
@@ -509,7 +546,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_bun_bt": {
+          "name": "man_bun_bt",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -556,7 +600,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_con_bt_pk": {
+          "name": "man_con_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -603,7 +654,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_dou_pk": {
+          "name": "man_dou_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -650,7 +708,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_goo_bt_pk": {
+          "name": "man_goo_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -697,7 +762,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_nes_bt_pk": {
+          "name": "man_nes_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -744,7 +816,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_pac_hie_bt_pk": {
+          "name": "man_pac_hie_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -791,7 +870,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_pac_pk": {
+          "name": "man_pac_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -838,7 +924,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_pal_pk": {
+          "name": "man_pal_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -885,7 +978,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_pro_pk": {
+          "name": "man_pro_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1006,7 +1106,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_rec_pk": {
+          "name": "man_rec_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1053,7 +1160,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_sel_uni_hie_bt_pk": {
+          "name": "man_sel_uni_hie_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1100,7 +1214,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "man_sel_uni_pk": {
+          "name": "man_sel_uni_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1113,8 +1234,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "inserted_at": {
           "name": "inserted_at",
@@ -1133,8 +1254,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "nestables_bt_id_bundles_bt_id_fk": {
-          "name": "nestables_bt_id_bundles_bt_id_fk",
+        "fk_nes_bt_bun_bt": {
+          "name": "fk_nes_bt_bun_bt",
           "tableFrom": "nestables_bt",
           "tableTo": "bundles_bt",
           "columnsFrom": [
@@ -1147,7 +1268,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "nes_bt_pk": {
+          "name": "nes_bt_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1160,8 +1288,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "parent_id": {
           "name": "parent_id",
@@ -1186,19 +1314,6 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "package_hierarchies_id_packages_id_fk": {
-          "name": "package_hierarchies_id_packages_id_fk",
-          "tableFrom": "package_hierarchies",
-          "tableTo": "packages",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "cascade"
-        },
         "package_hierarchies_parent_id_palettes_id_fk": {
           "name": "package_hierarchies_parent_id_palettes_id_fk",
           "tableFrom": "package_hierarchies",
@@ -1211,9 +1326,29 @@
           ],
           "onDelete": "cascade",
           "onUpdate": "cascade"
+        },
+        "fk_pac_hie_pac_bt": {
+          "name": "fk_pac_hie_pac_bt",
+          "tableFrom": "package_hierarchies",
+          "tableTo": "packages",
+          "columnsFrom": [
+            "id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "pac_hie_pk": {
+          "name": "pac_hie_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1226,8 +1361,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "inserted_at": {
           "name": "inserted_at",
@@ -1246,8 +1381,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "packages_id_nestables_bt_id_fk": {
-          "name": "packages_id_nestables_bt_id_fk",
+        "fk_pac_nes_bt": {
+          "name": "fk_pac_nes_bt",
           "tableFrom": "packages",
           "tableTo": "nestables_bt",
           "columnsFrom": [
@@ -1260,7 +1395,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "pac_pk": {
+          "name": "pac_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1273,8 +1415,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "inserted_at": {
           "name": "inserted_at",
@@ -1293,8 +1435,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "palettes_id_nestables_bt_id_fk": {
-          "name": "palettes_id_nestables_bt_id_fk",
+        "fk_pal_nes_bt": {
+          "name": "fk_pal_nes_bt",
           "tableFrom": "palettes",
           "tableTo": "nestables_bt",
           "columnsFrom": [
@@ -1307,7 +1449,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "pal_pk": {
+          "name": "pal_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1320,8 +1469,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "is_active": {
           "name": "is_active",
@@ -1347,8 +1496,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "products_id_goods_bt_id_fk": {
-          "name": "products_id_goods_bt_id_fk",
+        "fk_pro_goo_bt": {
+          "name": "fk_pro_goo_bt",
           "tableFrom": "products",
           "tableTo": "goods_bt",
           "columnsFrom": [
@@ -1361,7 +1510,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "pro_pk": {
+          "name": "pro_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1374,9 +1530,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "ingredient_id": {
           "name": "ingredient_id",
@@ -1464,7 +1619,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "raw_mat_pk": {
+          "name": "raw_mat_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {
         "raw_mat_num_uq": {
           "name": "raw_mat_num_uq",
@@ -1485,8 +1647,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "delivered_on": {
           "name": "delivered_on",
@@ -1512,8 +1674,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "received_batches_id_batches_bt_id_fk": {
-          "name": "received_batches_id_batches_bt_id_fk",
+        "fk_rec_bat_bat_bt": {
+          "name": "fk_rec_bat_bat_bt",
           "tableFrom": "received_batches",
           "tableTo": "batches_bt",
           "columnsFrom": [
@@ -1526,7 +1688,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "rec_bat_pk": {
+          "name": "rec_bat_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1565,8 +1734,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "recipe_has_constituents_jt_constituent_id_constituents_bt_id_fk": {
-          "name": "recipe_has_constituents_jt_constituent_id_constituents_bt_id_fk",
+        "fk_rec_has_con_jt_con_bt": {
+          "name": "fk_rec_has_con_jt_con_bt",
           "tableFrom": "recipe_has_constituents_jt",
           "tableTo": "constituents_bt",
           "columnsFrom": [
@@ -1578,8 +1747,8 @@
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
-        "recipe_has_constituents_jt_recipe_id_recipes_id_fk": {
-          "name": "recipe_has_constituents_jt_recipe_id_recipes_id_fk",
+        "fk_rec_has_con_jt_rec": {
+          "name": "fk_rec_has_con_jt_rec",
           "tableFrom": "recipe_has_constituents_jt",
           "tableTo": "recipes",
           "columnsFrom": [
@@ -1613,9 +1782,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "name": {
           "name": "name",
@@ -1679,7 +1847,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "rec_pk": {
+          "name": "rec_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1692,8 +1867,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "parent_id": {
           "name": "parent_id",
@@ -1718,19 +1893,6 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "selling_unit_hierarchies_id_selling_units_id_fk": {
-          "name": "selling_unit_hierarchies_id_selling_units_id_fk",
-          "tableFrom": "selling_unit_hierarchies",
-          "tableTo": "selling_units",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
-          "onDelete": "cascade",
-          "onUpdate": "cascade"
-        },
         "selling_unit_hierarchies_parent_id_nestables_bt_id_fk": {
           "name": "selling_unit_hierarchies_parent_id_nestables_bt_id_fk",
           "tableFrom": "selling_unit_hierarchies",
@@ -1743,9 +1905,29 @@
           ],
           "onDelete": "cascade",
           "onUpdate": "cascade"
+        },
+        "fk_sel_uni_hie_sel_uni": {
+          "name": "fk_sel_uni_hie_sel_uni",
+          "tableFrom": "selling_unit_hierarchies",
+          "tableTo": "selling_units",
+          "columnsFrom": [
+            "id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "sel_uni_hie_pk": {
+          "name": "sel_uni_hie_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1758,8 +1940,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "inserted_at": {
           "name": "inserted_at",
@@ -1778,8 +1960,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "selling_units_id_bundles_bt_id_fk": {
-          "name": "selling_units_id_bundles_bt_id_fk",
+        "fk_sel_uni_bun_bt": {
+          "name": "fk_sel_uni_bun_bt",
           "tableFrom": "selling_units",
           "tableTo": "bundles_bt",
           "columnsFrom": [
@@ -1792,7 +1974,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "sel_uni_pk": {
+          "name": "sel_uni_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1805,9 +1994,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "user_id": {
           "name": "user_id",
@@ -1858,7 +2046,14 @@
           "onUpdate": "cascade"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "set_pk": {
+          "name": "set_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -1909,8 +2104,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "unit_conversions_jt_from_unit_id_units_id_fk": {
-          "name": "unit_conversions_jt_from_unit_id_units_id_fk",
+        "fk_uni_con_jt_fro_uni": {
+          "name": "fk_uni_con_jt_fro_uni",
           "tableFrom": "unit_conversions_jt",
           "tableTo": "units",
           "columnsFrom": [
@@ -1922,8 +2117,8 @@
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
-        "unit_conversions_jt_to_unit_id_units_id_fk": {
-          "name": "unit_conversions_jt_to_unit_id_units_id_fk",
+        "fk_uni_con_jt_to_uni": {
+          "name": "fk_uni_con_jt_to_uni",
           "tableFrom": "unit_conversions_jt",
           "tableTo": "units",
           "columnsFrom": [
@@ -1932,8 +2127,8 @@
           "columnsTo": [
             "id"
           ],
-          "onDelete": "cascade",
-          "onUpdate": "cascade"
+          "onDelete": "no action",
+          "onUpdate": "no action"
         }
       },
       "compositePrimaryKeys": {
@@ -1957,9 +2152,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true,
-          "default": "gen_random_uuid()"
+          "primaryKey": false,
+          "notNull": false
         },
         "symbol": {
           "name": "symbol",
@@ -1990,7 +2184,14 @@
       },
       "indexes": {},
       "foreignKeys": {},
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "uni_pk": {
+          "name": "uni_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},
@@ -2003,8 +2204,8 @@
         "id": {
           "name": "id",
           "type": "uuid",
-          "primaryKey": true,
-          "notNull": true
+          "primaryKey": false,
+          "notNull": false
         },
         "inserted_at": {
           "name": "inserted_at",
@@ -2023,8 +2224,8 @@
       },
       "indexes": {},
       "foreignKeys": {
-        "use_fk": {
-          "name": "use_fk",
+        "fk_use_aut_use": {
+          "name": "fk_use_aut_use",
           "tableFrom": "users",
           "tableTo": "users",
           "schemaTo": "auth",
@@ -2038,7 +2239,14 @@
           "onUpdate": "no action"
         }
       },
-      "compositePrimaryKeys": {},
+      "compositePrimaryKeys": {
+        "use_pk": {
+          "name": "use_pk",
+          "columns": [
+            "id"
+          ]
+        }
+      },
       "uniqueConstraints": {},
       "policies": {},
       "checkConstraints": {},

@@ -4,6 +4,7 @@ import {
   boolean,
   foreignKey,
   pgTable,
+  primaryKey,
   text,
   timestamp,
   uuid,
@@ -15,7 +16,7 @@ import { recipeHasConstituents } from "./recipeHasConstituents";
 export const recipes = pgTable(
   "recipes",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
+    id: uuid("id"),
     name: text("name"),
     goodId: uuid("good_id").notNull(),
     predecessorId: uuid("predecessor_id").references(
@@ -42,6 +43,10 @@ export const recipes = pgTable(
       .$onUpdate(() => new Date()),
   },
   (table) => ({
+    pk: primaryKey({
+      name: "rec_pk",
+      columns: [table.id],
+    }),
     fkGooBt: foreignKey({
       name: "fk_rec_goo_bt",
       columns: [table.goodId],

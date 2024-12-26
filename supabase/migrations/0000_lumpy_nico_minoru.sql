@@ -1,29 +1,33 @@
 CREATE TABLE IF NOT EXISTS "batches_bt" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"number" text NOT NULL,
 	"expires_on" date DEFAULT CURRENT_TIMESTAMP + INTERVAL '1 year' NOT NULL,
 	"note" text,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "bat_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "bundles_bt" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "bun_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "configurations" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"version" integer NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "con_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "constituents_bt" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "con_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "doughs" (
@@ -44,7 +48,7 @@ CREATE TABLE IF NOT EXISTS "goods_bt" (
 );
 
 CREATE TABLE IF NOT EXISTS "ingredients" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"number" text NOT NULL,
 	"name" text NOT NULL,
 	"description" text,
@@ -54,69 +58,80 @@ CREATE TABLE IF NOT EXISTS "ingredients" (
 	"is_jewish_kosher" boolean DEFAULT true NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
 	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "ing_pk" PRIMARY KEY("id"),
 	CONSTRAINT "ing_num_uq" UNIQUE("number")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_batches" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"manufactured_on" date DEFAULT now() NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_bat_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_bundles_bt" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"bundle_id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_bun_bt" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_constituents_bt" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_con_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_doughs" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_dou_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_goods_bt" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_goo_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_nestables_bt" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_nes_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_package_hierarchies_bt" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_pac_hie_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_packages" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_pac_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_palettes" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_pal_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_products" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_pro_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_recipe_has_constituents_jt" (
@@ -130,55 +145,63 @@ CREATE TABLE IF NOT EXISTS "manufactured_recipe_has_constituents_jt" (
 CREATE TABLE IF NOT EXISTS "manufactured_recipes" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_rec_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_selling_unit_hierarchies_bt" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_sel_uni_hie_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "manufactured_selling_units" (
 	"id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "man_sel_uni_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "nestables_bt" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "nes_bt_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "package_hierarchies" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"parent_id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "pac_hie_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "packages" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "pac_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "palettes" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "pal_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "products" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"is_active" boolean DEFAULT true NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "pro_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "raw_materials" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"ingredient_id" uuid NOT NULL,
 	"received_batches_id" uuid NOT NULL,
 	"number" text NOT NULL,
@@ -188,14 +211,16 @@ CREATE TABLE IF NOT EXISTS "raw_materials" (
 	"override_is_jewish_kosher" boolean,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
 	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "raw_mat_pk" PRIMARY KEY("id"),
 	CONSTRAINT "raw_mat_num_uq" UNIQUE("number")
 );
 
 CREATE TABLE IF NOT EXISTS "received_batches" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"delivered_on" date DEFAULT now() NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "rec_bat_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "recipe_has_constituents_jt" (
@@ -207,34 +232,38 @@ CREATE TABLE IF NOT EXISTS "recipe_has_constituents_jt" (
 );
 
 CREATE TABLE IF NOT EXISTS "recipes" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"name" text,
 	"good_id" uuid NOT NULL,
 	"predecessor_id" uuid,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "rec_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "selling_unit_hierarchies" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"parent_id" uuid NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "sel_uni_hie_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "selling_units" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "sel_uni_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "settings" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"user_id" uuid NOT NULL,
 	"name" text NOT NULL,
 	"value" text NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "set_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "unit_conversions_jt" (
@@ -248,17 +277,19 @@ CREATE TABLE IF NOT EXISTS "unit_conversions_jt" (
 );
 
 CREATE TABLE IF NOT EXISTS "units" (
-	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"id" uuid,
 	"symbol" text NOT NULL,
 	"label" text NOT NULL,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "uni_pk" PRIMARY KEY("id")
 );
 
 CREATE TABLE IF NOT EXISTS "users" (
-	"id" uuid PRIMARY KEY NOT NULL,
+	"id" uuid,
 	"inserted_at" timestamp (3) DEFAULT now() NOT NULL,
-	"updated_at" timestamp (3) DEFAULT now() NOT NULL
+	"updated_at" timestamp (3) DEFAULT now() NOT NULL,
+	CONSTRAINT "use_pk" PRIMARY KEY("id")
 );
 
 ALTER TABLE "users" ENABLE ROW LEVEL SECURITY;
@@ -281,13 +312,13 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "ingredients" ADD CONSTRAINT "ingredients_id_constituents_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."constituents_bt"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "ingredients" ADD CONSTRAINT "fk_ing_con_bt" FOREIGN KEY ("id") REFERENCES "public"."constituents_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "manufactured_batches" ADD CONSTRAINT "manufactured_batches_id_batches_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."batches_bt"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "manufactured_batches" ADD CONSTRAINT "fk_man_bat_bat_bt" FOREIGN KEY ("id") REFERENCES "public"."batches_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -377,13 +408,7 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "nestables_bt" ADD CONSTRAINT "nestables_bt_id_bundles_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."bundles_bt"("id") ON DELETE cascade ON UPDATE cascade;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
-
-DO $$ BEGIN
- ALTER TABLE "package_hierarchies" ADD CONSTRAINT "package_hierarchies_id_packages_id_fk" FOREIGN KEY ("id") REFERENCES "public"."packages"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "nestables_bt" ADD CONSTRAINT "fk_nes_bt_bun_bt" FOREIGN KEY ("id") REFERENCES "public"."bundles_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -395,19 +420,25 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "packages" ADD CONSTRAINT "packages_id_nestables_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."nestables_bt"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "package_hierarchies" ADD CONSTRAINT "fk_pac_hie_pac_bt" FOREIGN KEY ("id") REFERENCES "public"."packages"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "palettes" ADD CONSTRAINT "palettes_id_nestables_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."nestables_bt"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "packages" ADD CONSTRAINT "fk_pac_nes_bt" FOREIGN KEY ("id") REFERENCES "public"."nestables_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "products" ADD CONSTRAINT "products_id_goods_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."goods_bt"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "palettes" ADD CONSTRAINT "fk_pal_nes_bt" FOREIGN KEY ("id") REFERENCES "public"."nestables_bt"("id") ON DELETE cascade ON UPDATE cascade;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+ ALTER TABLE "products" ADD CONSTRAINT "fk_pro_goo_bt" FOREIGN KEY ("id") REFERENCES "public"."goods_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -425,19 +456,19 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "received_batches" ADD CONSTRAINT "received_batches_id_batches_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."batches_bt"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "received_batches" ADD CONSTRAINT "fk_rec_bat_bat_bt" FOREIGN KEY ("id") REFERENCES "public"."batches_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "recipe_has_constituents_jt" ADD CONSTRAINT "recipe_has_constituents_jt_constituent_id_constituents_bt_id_fk" FOREIGN KEY ("constituent_id") REFERENCES "public"."constituents_bt"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "recipe_has_constituents_jt" ADD CONSTRAINT "fk_rec_has_con_jt_con_bt" FOREIGN KEY ("constituent_id") REFERENCES "public"."constituents_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "recipe_has_constituents_jt" ADD CONSTRAINT "recipe_has_constituents_jt_recipe_id_recipes_id_fk" FOREIGN KEY ("recipe_id") REFERENCES "public"."recipes"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "recipe_has_constituents_jt" ADD CONSTRAINT "fk_rec_has_con_jt_rec" FOREIGN KEY ("recipe_id") REFERENCES "public"."recipes"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -455,19 +486,19 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "selling_unit_hierarchies" ADD CONSTRAINT "selling_unit_hierarchies_id_selling_units_id_fk" FOREIGN KEY ("id") REFERENCES "public"."selling_units"("id") ON DELETE cascade ON UPDATE cascade;
-EXCEPTION
- WHEN duplicate_object THEN null;
-END $$;
-
-DO $$ BEGIN
  ALTER TABLE "selling_unit_hierarchies" ADD CONSTRAINT "selling_unit_hierarchies_parent_id_nestables_bt_id_fk" FOREIGN KEY ("parent_id") REFERENCES "public"."nestables_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "selling_units" ADD CONSTRAINT "selling_units_id_bundles_bt_id_fk" FOREIGN KEY ("id") REFERENCES "public"."bundles_bt"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "selling_unit_hierarchies" ADD CONSTRAINT "fk_sel_uni_hie_sel_uni" FOREIGN KEY ("id") REFERENCES "public"."selling_units"("id") ON DELETE cascade ON UPDATE cascade;
+EXCEPTION
+ WHEN duplicate_object THEN null;
+END $$;
+
+DO $$ BEGIN
+ ALTER TABLE "selling_units" ADD CONSTRAINT "fk_sel_uni_bun_bt" FOREIGN KEY ("id") REFERENCES "public"."bundles_bt"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -479,19 +510,19 @@ EXCEPTION
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "unit_conversions_jt" ADD CONSTRAINT "unit_conversions_jt_from_unit_id_units_id_fk" FOREIGN KEY ("from_unit_id") REFERENCES "public"."units"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "unit_conversions_jt" ADD CONSTRAINT "fk_uni_con_jt_fro_uni" FOREIGN KEY ("from_unit_id") REFERENCES "public"."units"("id") ON DELETE cascade ON UPDATE cascade;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "unit_conversions_jt" ADD CONSTRAINT "unit_conversions_jt_to_unit_id_units_id_fk" FOREIGN KEY ("to_unit_id") REFERENCES "public"."units"("id") ON DELETE cascade ON UPDATE cascade;
+ ALTER TABLE "unit_conversions_jt" ADD CONSTRAINT "fk_uni_con_jt_to_uni" FOREIGN KEY ("to_unit_id") REFERENCES "public"."units"("id") ON DELETE no action ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 
 DO $$ BEGIN
- ALTER TABLE "users" ADD CONSTRAINT "use_fk" FOREIGN KEY ("id") REFERENCES "auth"."users"("id") ON DELETE cascade ON UPDATE no action;
+ ALTER TABLE "users" ADD CONSTRAINT "fk_use_aut_use" FOREIGN KEY ("id") REFERENCES "auth"."users"("id") ON DELETE cascade ON UPDATE no action;
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;

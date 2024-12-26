@@ -1,29 +1,38 @@
 import { relations } from "drizzle-orm";
-import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
+import { pgTable, primaryKey, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { nestables } from "./nestables";
 
-export const manufacturedNestables = pgTable("manufactured_nestables_bt", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  nestableId: uuid("id")
-    .notNull()
-    .references(() => nestables.id),
-  insertedAt: timestamp("inserted_at", {
-    mode: "date",
-    precision: 3,
-    withTimezone: false,
+export const manufacturedNestables = pgTable(
+  "manufactured_nestables_bt",
+  {
+    id: uuid("id"),
+    nestableId: uuid("id")
+      .notNull()
+      .references(() => nestables.id),
+    insertedAt: timestamp("inserted_at", {
+      mode: "date",
+      precision: 3,
+      withTimezone: false,
+    })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", {
+      mode: "date",
+      precision: 3,
+      withTimezone: false,
+    })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => ({
+    pk: primaryKey({
+      name: "man_nes_bt_pk",
+      columns: [table.id],
+    }),
   })
-    .notNull()
-    .defaultNow(),
-  updatedAt: timestamp("updated_at", {
-    mode: "date",
-    precision: 3,
-    withTimezone: false,
-  })
-    .notNull()
-    .defaultNow()
-    .$onUpdate(() => new Date()),
-});
+);
 
 export const manufacturedNestablesRelations = relations(
   manufacturedNestables,
