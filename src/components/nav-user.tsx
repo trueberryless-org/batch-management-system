@@ -103,14 +103,14 @@ export async function NavUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <form action={signOutAction}>
-              <Button type="submit" asChild>
-                <DropdownMenuItem>
+            <DropdownMenuItem>
+              <form action={signOutAction}>
+                <Button type="submit">
                   <LogOut />
                   Log out
-                </DropdownMenuItem>
-              </Button>
-            </form>
+                </Button>
+              </form>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
