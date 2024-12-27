@@ -1,6 +1,7 @@
 import { signInAction } from "@/app/actions";
 import { Link, routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { use } from "react";
 
 import { FormMessage, Message } from "@/components/form-message";
 import BreadcrumbContextSetter from "@/components/page-header/breadcrumb-context-setter";
@@ -22,7 +23,8 @@ export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default function Login({ searchParams }: { searchParams: Message }) {
+export default function Login(props: { searchParams: Promise<Message> }) {
+  const searchParams = use(props.searchParams);
   const t = useTranslations("authPages.signIn");
   const tParent = useTranslations("authPages");
 

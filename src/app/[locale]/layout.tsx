@@ -22,13 +22,16 @@ export const metadata = {
     "Manage incoming and outgoing batches with ease. Developed for Richter Glutenfreie Backwaren.",
 };
 
-export default async function RootLayout({
-  children,
-  params: { locale },
-}: {
+export default async function RootLayout(props: {
   children: React.ReactNode;
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const params = await props.params;
+
+  const { locale } = params;
+
+  const { children } = props;
+
   const messages = await getMessages();
 
   return (

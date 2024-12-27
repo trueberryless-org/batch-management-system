@@ -38,9 +38,7 @@ export async function NavUser() {
   const t = useTranslations("header.user");
   const {
     data: { user },
-  } = await createClient().auth.getUser();
-
-  console.log(user);
+  } = await (await createClient()).auth.getUser();
 
   return user ? (
     <SidebarMenu>
@@ -103,14 +101,14 @@ export async function NavUser() {
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
-            <form action={signOutAction}>
-              <Button type="submit" asChild>
-                <DropdownMenuItem>
+            <DropdownMenuItem>
+              <form action={signOutAction}>
+                <Button type="submit">
                   <LogOut />
                   Log out
-                </DropdownMenuItem>
-              </Button>
-            </form>
+                </Button>
+              </form>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       </SidebarMenuItem>
