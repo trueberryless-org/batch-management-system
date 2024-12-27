@@ -1,3 +1,4 @@
+import { use } from "react";
 import { forgotPasswordAction } from "@/app/actions";
 import { Link, routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
@@ -22,11 +23,12 @@ export async function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-export default function ForgotPassword({
-  searchParams,
-}: {
-  searchParams: Message;
-}) {
+export default function ForgotPassword(
+  props: {
+    searchParams: Promise<Message>;
+  }
+) {
+  const searchParams = use(props.searchParams);
   const t = useTranslations("authPages.forgotPassword");
   const tParent = useTranslations("authPages");
 
