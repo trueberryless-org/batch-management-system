@@ -1,7 +1,7 @@
-import { use } from "react";
 import { signUpAction } from "@/app/actions";
 import { Link, routing } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { use } from "react";
 
 import { FormMessage, Message } from "@/components/form-message";
 import BreadcrumbContextSetter from "@/components/page-header/breadcrumb-context-setter";
