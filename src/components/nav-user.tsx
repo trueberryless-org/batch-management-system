@@ -38,9 +38,7 @@ export async function NavUser() {
   const t = useTranslations("header.user");
   const {
     data: { user },
-  } = await createClient().auth.getUser();
-
-  console.log(user);
+  } = await (await createClient()).auth.getUser();
 
   return user ? (
     <SidebarMenu>
