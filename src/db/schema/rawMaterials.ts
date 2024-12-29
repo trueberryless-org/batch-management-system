@@ -2,6 +2,7 @@ import { relations } from "drizzle-orm";
 import {
   boolean,
   pgTable,
+  primaryKey,
   text,
   timestamp,
   unique,
@@ -14,7 +15,7 @@ import { receivedBatches } from "./receivedBatches";
 export const rawMaterials = pgTable(
   "raw_materials",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
+    id: uuid("id"),
     ingredientId: uuid("ingredient_id")
       .notNull()
       .references(() => ingredients.id, {
@@ -48,8 +49,12 @@ export const rawMaterials = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
   },
-  (t) => ({
-    unq: unique().on(t.number),
+  (table) => ({
+    pk: primaryKey({
+      name: "raw_mat_pk",
+      columns: [table.id],
+    }),
+    unq: unique("raw_mat_num_uq").on(table.number),
   })
 );
 
@@ -57,10 +62,12 @@ export const rawMaterialsRelations = relations(rawMaterials, ({ one }) => ({
   ingredient: one(ingredients, {
     fields: [rawMaterials.ingredientId],
     references: [ingredients.id],
+    relationName: "raw_mat_fk_ing",
   }),
   batch: one(receivedBatches, {
     fields: [rawMaterials.batchId],
     references: [receivedBatches.id],
+    relationName: "raw_mat_fk_rec_bat",
   }),
 }));
 

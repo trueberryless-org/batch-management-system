@@ -4,6 +4,7 @@ import {
   pgPolicy,
   pgSchema,
   pgTable,
+  primaryKey,
   timestamp,
   uuid,
 } from "drizzle-orm/pg-core";
@@ -14,7 +15,7 @@ import { settings } from "./settings";
 export const users = pgTable(
   "users",
   {
-    id: uuid("id").primaryKey().notNull(),
+    id: uuid("id"),
     insertedAt: timestamp("inserted_at", {
       mode: "date",
       precision: 3,
@@ -31,20 +32,25 @@ export const users = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
   },
-  (table) => [
-    foreignKey({
+  (table) => ({
+    pk: primaryKey({
+      name: "use_pk",
+      columns: [table.id],
+    }),
+    fkAutUse: foreignKey({
+      name: "fk_use_aut_use",
       columns: [table.id],
       // reference to the auth table from Supabase
       foreignColumns: [authUsers.id],
-      name: "users_id_fk",
     }).onDelete("cascade"),
-  ]
+  })
 ).enableRLS();
 
 export const usersRelations = relations(users, ({ one, many }) => ({
   user: one(authUsers, {
     fields: [users.id],
     references: [authUsers.id],
+    relationName: "use_fk_aut_use",
   }),
   settings: many(settings),
 }));

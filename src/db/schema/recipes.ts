@@ -2,7 +2,9 @@ import { relations } from "drizzle-orm";
 import {
   AnyPgColumn,
   boolean,
+  foreignKey,
   pgTable,
+  primaryKey,
   text,
   timestamp,
   uuid,
@@ -11,45 +13,61 @@ import {
 import { goods } from "./goods";
 import { recipeHasConstituents } from "./recipeHasConstituents";
 
-export const recipes = pgTable("recipes", {
-  id: uuid("id").primaryKey().defaultRandom(),
-  name: text("name"),
-  goodId: uuid("good_id")
-    .notNull()
-    .references(() => goods.id, { onDelete: "cascade", onUpdate: "cascade" }),
-  predecessorId: uuid("predecessor_id").references(
-    (): AnyPgColumn => recipes.id,
-    {
-      onDelete: "set default",
-      onUpdate: "set default",
-    }
-  ),
-  insertedAt: timestamp("inserted_at", {
-    mode: "date",
-    precision: 3,
-    withTimezone: false,
+export const recipes = pgTable(
+  "recipes",
+  {
+    id: uuid("id"),
+    name: text("name"),
+    goodId: uuid("good_id").notNull(),
+    predecessorId: uuid("predecessor_id").references(
+      (): AnyPgColumn => recipes.id,
+      {
+        onDelete: "set default",
+        onUpdate: "set default",
+      }
+    ),
+    insertedAt: timestamp("inserted_at", {
+      mode: "date",
+      precision: 3,
+      withTimezone: false,
+    })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", {
+      mode: "date",
+      precision: 3,
+      withTimezone: false,
+    })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => ({
+    pk: primaryKey({
+      name: "rec_pk",
+      columns: [table.id],
+    }),
+    fkGooBt: foreignKey({
+      name: "fk_rec_goo_bt",
+      columns: [table.goodId],
+      foreignColumns: [goods.id],
+    })
+      .onDelete("cascade")
+      .onUpdate("cascade"),
   })
-    .notNull()
-    .defaultNow(),
-  updatedAt: timestamp("updated_at", {
-    mode: "date",
-    precision: 3,
-    withTimezone: false,
-  })
-    .notNull()
-    .defaultNow()
-    .$onUpdate(() => new Date()),
-});
+);
 
 export const recipesRelations = relations(recipes, ({ one, many }) => ({
   good: one(goods, {
     fields: [recipes.goodId],
     references: [goods.id],
+    relationName: "rec_fk_goo_bt",
   }),
   recipeHasConstituents: many(recipeHasConstituents),
   predecessors: one(recipes, {
     fields: [recipes.predecessorId],
     references: [recipes.id],
+    relationName: "rec_fk_rec",
   }),
   successors: many(recipes),
 }));

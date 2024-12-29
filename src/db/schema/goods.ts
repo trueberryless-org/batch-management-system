@@ -1,7 +1,9 @@
 import { relations } from "drizzle-orm";
 import {
   AnyPgColumn,
+  foreignKey,
   pgTable,
+  primaryKey,
   text,
   timestamp,
   unique,
@@ -14,12 +16,7 @@ import { recipes } from "./recipes";
 export const goods = pgTable(
   "goods_bt",
   {
-    id: uuid("id")
-      .primaryKey()
-      .references(() => constituents.id, {
-        onDelete: "cascade",
-        onUpdate: "cascade",
-      }),
+    id: uuid("id"),
     currentRecipeId: uuid("current_recipe_id").references(
       (): AnyPgColumn => recipes.id
     ),
@@ -40,8 +37,17 @@ export const goods = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
   },
-  (t) => ({
-    unq: unique().on(t.number),
+  (table) => ({
+    pk: primaryKey({
+      name: "goo_bt_pk",
+      columns: [table.id],
+    }),
+    fkConBt: foreignKey({
+      name: "fk_goo_bt_con_bt",
+      columns: [table.id],
+      foreignColumns: [constituents.id],
+    }),
+    unq: unique("goo_bt_num_uq").on(table.number),
   })
 );
 
@@ -49,10 +55,12 @@ export const goodsRelations = relations(goods, ({ one, many }) => ({
   constituent: one(constituents, {
     fields: [goods.id],
     references: [constituents.id],
+    relationName: "goo_bt_fk_con_bt",
   }),
   currentRecipe: one(recipes, {
     fields: [goods.currentRecipeId],
     references: [recipes.id],
+    relationName: "goo_bt_fk_rec",
   }),
   recipes: many(recipes),
 }));

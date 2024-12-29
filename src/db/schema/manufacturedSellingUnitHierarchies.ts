@@ -1,12 +1,12 @@
 import { relations } from "drizzle-orm";
-import { pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
+import { pgTable, primaryKey, timestamp, uuid } from "drizzle-orm/pg-core";
 
 import { sellingUnitHierarchies } from "./sellingUnitHierarchies";
 
 export const manufacturedSellingUnitHierarchies = pgTable(
   "manufactured_selling_unit_hierarchies_bt",
   {
-    id: uuid("id").primaryKey().defaultRandom(),
+    id: uuid("id"),
     sellingUnitHierarchyId: uuid("id")
       .notNull()
       .references(() => sellingUnitHierarchies.id),
@@ -25,7 +25,13 @@ export const manufacturedSellingUnitHierarchies = pgTable(
       .notNull()
       .defaultNow()
       .$onUpdate(() => new Date()),
-  }
+  },
+  (table) => ({
+    pk: primaryKey({
+      name: "man_sel_uni_hie_bt_pk",
+      columns: [table.id],
+    }),
+  })
 );
 
 export const manufacturedSellingUnitHierarchiesRelations = relations(
@@ -34,6 +40,7 @@ export const manufacturedSellingUnitHierarchiesRelations = relations(
     sellingUnitHierarchy: one(sellingUnitHierarchies, {
       fields: [manufacturedSellingUnitHierarchies.sellingUnitHierarchyId],
       references: [sellingUnitHierarchies.id],
+      relationName: "man_sel_uni_hie_bt_fk_sel_uni_hie",
     }),
   })
 );

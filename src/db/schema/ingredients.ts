@@ -1,7 +1,9 @@
 import { relations } from "drizzle-orm";
 import {
   boolean,
+  foreignKey,
   pgTable,
+  primaryKey,
   text,
   timestamp,
   unique,
@@ -13,12 +15,7 @@ import { constituents } from "./constituents";
 export const ingredients = pgTable(
   "ingredients",
   {
-    id: uuid("id")
-      .primaryKey()
-      .references(() => constituents.id, {
-        onDelete: "cascade",
-        onUpdate: "cascade",
-      }),
+    id: uuid("id"),
     number: text("number").notNull(),
     name: text("name").notNull(),
     description: text("description"),
@@ -42,8 +39,19 @@ export const ingredients = pgTable(
       .defaultNow()
       .$onUpdate(() => new Date()),
   },
-  (t) => ({
-    unq: unique().on(t.number),
+  (table) => ({
+    pk: primaryKey({
+      name: "ing_pk",
+      columns: [table.id],
+    }),
+    fkConBt: foreignKey({
+      name: "fk_ing_con_bt",
+      columns: [table.id],
+      foreignColumns: [constituents.id],
+    })
+      .onDelete("cascade")
+      .onUpdate("cascade"),
+    unq: unique("ing_num_uq").on(table.number),
   })
 );
 
@@ -51,6 +59,7 @@ export const ingredientsRelations = relations(ingredients, ({ one, many }) => ({
   constituent: one(constituents, {
     fields: [ingredients.id],
     references: [constituents.id],
+    relationName: "ing_fk_con_bt",
   }),
 }));
 
