@@ -1,5 +1,11 @@
 # batch-management-system-monorepo
 
+## 0.1.1
+
+### Patch Changes
+
+- [`6d36514`](https://github.com/trueberryless-org/batch-management-system/commit/6d36514940a59908d0273d47f359e396ea501ae5) Thanks [@trueberryless](https://github.com/trueberryless)! - Some small fixes to general project to make it buildable
+
 ## 0.1.0
 
 ### Minor Changes
