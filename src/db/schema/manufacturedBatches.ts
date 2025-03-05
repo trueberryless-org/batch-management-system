@@ -1,29 +1,50 @@
 import { relations } from "drizzle-orm";
-import { date, pgTable, timestamp, uuid } from "drizzle-orm/pg-core";
+import {
+  date,
+  foreignKey,
+  pgTable,
+  primaryKey,
+  timestamp,
+  uuid,
+} from "drizzle-orm/pg-core";
 
 import { batches } from "./batches";
 
-export const manufacturedBatches = pgTable("manufactured_batches", {
-  id: uuid("id")
-    .primaryKey()
-    .references(() => batches.id, { onDelete: "cascade", onUpdate: "cascade" }),
-  manufacturedOn: date("manufactured_on").notNull().defaultNow(),
-  insertedAt: timestamp("inserted_at", {
-    mode: "date",
-    precision: 3,
-    withTimezone: false,
+export const manufacturedBatches = pgTable(
+  "manufactured_batches",
+  {
+    id: uuid("id"),
+    manufacturedOn: date("manufactured_on").notNull().defaultNow(),
+    insertedAt: timestamp("inserted_at", {
+      mode: "date",
+      precision: 3,
+      withTimezone: false,
+    })
+      .notNull()
+      .defaultNow(),
+    updatedAt: timestamp("updated_at", {
+      mode: "date",
+      precision: 3,
+      withTimezone: false,
+    })
+      .notNull()
+      .defaultNow()
+      .$onUpdate(() => new Date()),
+  },
+  (table) => ({
+    pk: primaryKey({
+      name: "man_bat_pk",
+      columns: [table.id],
+    }),
+    fkBatBt: foreignKey({
+      name: "fk_man_bat_bat_bt",
+      columns: [table.id],
+      foreignColumns: [batches.id],
+    })
+      .onDelete("cascade")
+      .onUpdate("cascade"),
   })
-    .notNull()
-    .defaultNow(),
-  updatedAt: timestamp("updated_at", {
-    mode: "date",
-    precision: 3,
-    withTimezone: false,
-  })
-    .notNull()
-    .defaultNow()
-    .$onUpdate(() => new Date()),
-});
+);
 
 export const manufacturedBatchesRelations = relations(
   manufacturedBatches,
@@ -31,6 +52,7 @@ export const manufacturedBatchesRelations = relations(
     batch: one(batches, {
       fields: [manufacturedBatches.id],
       references: [batches.id],
+      relationName: "man_bat_fk_bat_bt",
     }),
   })
 );
