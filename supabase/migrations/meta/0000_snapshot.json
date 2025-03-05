@@ -53,9 +53,7 @@
       "compositePrimaryKeys": {
         "bat_bt_pk": {
           "name": "bat_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -93,9 +91,7 @@
       "compositePrimaryKeys": {
         "bun_bt_pk": {
           "name": "bun_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -139,9 +135,7 @@
       "compositePrimaryKeys": {
         "con_pk": {
           "name": "con_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -179,9 +173,7 @@
       "compositePrimaryKeys": {
         "con_bt_pk": {
           "name": "con_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -220,12 +212,8 @@
           "name": "fk_dou_goo_bt",
           "tableFrom": "doughs",
           "tableTo": "goods_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -233,9 +221,7 @@
       "compositePrimaryKeys": {
         "dou_pk": {
           "name": "dou_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -286,12 +272,8 @@
           "name": "goods_bt_current_recipe_id_recipes_id_fk",
           "tableFrom": "goods_bt",
           "tableTo": "recipes",
-          "columnsFrom": [
-            "current_recipe_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["current_recipe_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         },
@@ -299,12 +281,8 @@
           "name": "fk_goo_bt_con_bt",
           "tableFrom": "goods_bt",
           "tableTo": "constituents_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -312,18 +290,14 @@
       "compositePrimaryKeys": {
         "goo_bt_pk": {
           "name": "goo_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {
         "goo_bt_num_uq": {
           "name": "goo_bt_num_uq",
           "nullsNotDistinct": false,
-          "columns": [
-            "number"
-          ]
+          "columns": ["number"]
         }
       },
       "policies": {},
@@ -407,12 +381,8 @@
           "name": "fk_ing_con_bt",
           "tableFrom": "ingredients",
           "tableTo": "constituents_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -420,18 +390,14 @@
       "compositePrimaryKeys": {
         "ing_pk": {
           "name": "ing_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {
         "ing_num_uq": {
           "name": "ing_num_uq",
           "nullsNotDistinct": false,
-          "columns": [
-            "number"
-          ]
+          "columns": ["number"]
         }
       },
       "policies": {},
@@ -476,12 +442,8 @@
           "name": "fk_man_bat_bat_bt",
           "tableFrom": "manufactured_batches",
           "tableTo": "batches_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -489,9 +451,7 @@
       "compositePrimaryKeys": {
         "man_bat_pk": {
           "name": "man_bat_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -536,12 +496,8 @@
           "name": "manufactured_bundles_bt_bundle_id_bundles_bt_id_fk",
           "tableFrom": "manufactured_bundles_bt",
           "tableTo": "bundles_bt",
-          "columnsFrom": [
-            "bundle_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["bundle_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -549,9 +505,7 @@
       "compositePrimaryKeys": {
         "man_bun_bt": {
           "name": "man_bun_bt",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -590,12 +544,8 @@
           "name": "manufactured_constituents_bt_id_constituents_bt_id_fk",
           "tableFrom": "manufactured_constituents_bt",
           "tableTo": "constituents_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -603,9 +553,7 @@
       "compositePrimaryKeys": {
         "man_con_bt_pk": {
           "name": "man_con_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -644,12 +592,8 @@
           "name": "manufactured_doughs_id_doughs_id_fk",
           "tableFrom": "manufactured_doughs",
           "tableTo": "doughs",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -657,9 +601,7 @@
       "compositePrimaryKeys": {
         "man_dou_pk": {
           "name": "man_dou_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -698,12 +640,8 @@
           "name": "manufactured_goods_bt_id_goods_bt_id_fk",
           "tableFrom": "manufactured_goods_bt",
           "tableTo": "goods_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -711,9 +649,7 @@
       "compositePrimaryKeys": {
         "man_goo_bt_pk": {
           "name": "man_goo_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -752,12 +688,8 @@
           "name": "manufactured_nestables_bt_id_nestables_bt_id_fk",
           "tableFrom": "manufactured_nestables_bt",
           "tableTo": "nestables_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -765,9 +697,7 @@
       "compositePrimaryKeys": {
         "man_nes_bt_pk": {
           "name": "man_nes_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -806,12 +736,8 @@
           "name": "manufactured_package_hierarchies_bt_id_package_hierarchies_id_fk",
           "tableFrom": "manufactured_package_hierarchies_bt",
           "tableTo": "package_hierarchies",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -819,9 +745,7 @@
       "compositePrimaryKeys": {
         "man_pac_hie_bt_pk": {
           "name": "man_pac_hie_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -860,12 +784,8 @@
           "name": "manufactured_packages_id_packages_id_fk",
           "tableFrom": "manufactured_packages",
           "tableTo": "packages",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -873,9 +793,7 @@
       "compositePrimaryKeys": {
         "man_pac_pk": {
           "name": "man_pac_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -914,12 +832,8 @@
           "name": "manufactured_palettes_id_palettes_id_fk",
           "tableFrom": "manufactured_palettes",
           "tableTo": "palettes",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -927,9 +841,7 @@
       "compositePrimaryKeys": {
         "man_pal_pk": {
           "name": "man_pal_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -968,12 +880,8 @@
           "name": "manufactured_products_id_products_id_fk",
           "tableFrom": "manufactured_products",
           "tableTo": "products",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -981,9 +889,7 @@
       "compositePrimaryKeys": {
         "man_pro_pk": {
           "name": "man_pro_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1028,12 +934,8 @@
           "name": "fk_man_rec_has_con_jt_man_con_bt",
           "tableFrom": "manufactured_recipe_has_constituents_jt",
           "tableTo": "manufactured_constituents_bt",
-          "columnsFrom": [
-            "manufactured_constituent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["manufactured_constituent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1041,12 +943,8 @@
           "name": "fk_man_rec_has_con_jt_man_rec",
           "tableFrom": "manufactured_recipe_has_constituents_jt",
           "tableTo": "manufactured_recipes",
-          "columnsFrom": [
-            "manufactured_recipe_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["manufactured_recipe_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1054,10 +952,7 @@
       "compositePrimaryKeys": {
         "man_rec_has_con_jt_pk": {
           "name": "man_rec_has_con_jt_pk",
-          "columns": [
-            "manufactured_constituent_id",
-            "manufactured_recipe_id"
-          ]
+          "columns": ["manufactured_constituent_id", "manufactured_recipe_id"]
         }
       },
       "uniqueConstraints": {},
@@ -1096,12 +991,8 @@
           "name": "manufactured_recipes_id_recipes_id_fk",
           "tableFrom": "manufactured_recipes",
           "tableTo": "recipes",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1109,9 +1000,7 @@
       "compositePrimaryKeys": {
         "man_rec_pk": {
           "name": "man_rec_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1150,12 +1039,8 @@
           "name": "manufactured_selling_unit_hierarchies_bt_id_selling_unit_hierarchies_id_fk",
           "tableFrom": "manufactured_selling_unit_hierarchies_bt",
           "tableTo": "selling_unit_hierarchies",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1163,9 +1048,7 @@
       "compositePrimaryKeys": {
         "man_sel_uni_hie_bt_pk": {
           "name": "man_sel_uni_hie_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1204,12 +1087,8 @@
           "name": "manufactured_selling_units_id_selling_units_id_fk",
           "tableFrom": "manufactured_selling_units",
           "tableTo": "selling_units",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -1217,9 +1096,7 @@
       "compositePrimaryKeys": {
         "man_sel_uni_pk": {
           "name": "man_sel_uni_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1258,12 +1135,8 @@
           "name": "fk_nes_bt_bun_bt",
           "tableFrom": "nestables_bt",
           "tableTo": "bundles_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1271,9 +1144,7 @@
       "compositePrimaryKeys": {
         "nes_bt_pk": {
           "name": "nes_bt_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1318,12 +1189,8 @@
           "name": "package_hierarchies_parent_id_palettes_id_fk",
           "tableFrom": "package_hierarchies",
           "tableTo": "palettes",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1331,12 +1198,8 @@
           "name": "fk_pac_hie_pac_bt",
           "tableFrom": "package_hierarchies",
           "tableTo": "packages",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1344,9 +1207,7 @@
       "compositePrimaryKeys": {
         "pac_hie_pk": {
           "name": "pac_hie_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1385,12 +1246,8 @@
           "name": "fk_pac_nes_bt",
           "tableFrom": "packages",
           "tableTo": "nestables_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1398,9 +1255,7 @@
       "compositePrimaryKeys": {
         "pac_pk": {
           "name": "pac_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1439,12 +1294,8 @@
           "name": "fk_pal_nes_bt",
           "tableFrom": "palettes",
           "tableTo": "nestables_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1452,9 +1303,7 @@
       "compositePrimaryKeys": {
         "pal_pk": {
           "name": "pal_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1500,12 +1349,8 @@
           "name": "fk_pro_goo_bt",
           "tableFrom": "products",
           "tableTo": "goods_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1513,9 +1358,7 @@
       "compositePrimaryKeys": {
         "pro_pk": {
           "name": "pro_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1596,12 +1439,8 @@
           "name": "raw_materials_ingredient_id_ingredients_id_fk",
           "tableFrom": "raw_materials",
           "tableTo": "ingredients",
-          "columnsFrom": [
-            "ingredient_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["ingredient_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1609,12 +1448,8 @@
           "name": "raw_materials_received_batches_id_received_batches_id_fk",
           "tableFrom": "raw_materials",
           "tableTo": "received_batches",
-          "columnsFrom": [
-            "received_batches_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["received_batches_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1622,18 +1457,14 @@
       "compositePrimaryKeys": {
         "raw_mat_pk": {
           "name": "raw_mat_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {
         "raw_mat_num_uq": {
           "name": "raw_mat_num_uq",
           "nullsNotDistinct": false,
-          "columns": [
-            "number"
-          ]
+          "columns": ["number"]
         }
       },
       "policies": {},
@@ -1678,12 +1509,8 @@
           "name": "fk_rec_bat_bat_bt",
           "tableFrom": "received_batches",
           "tableTo": "batches_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1691,9 +1518,7 @@
       "compositePrimaryKeys": {
         "rec_bat_pk": {
           "name": "rec_bat_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1738,12 +1563,8 @@
           "name": "fk_rec_has_con_jt_con_bt",
           "tableFrom": "recipe_has_constituents_jt",
           "tableTo": "constituents_bt",
-          "columnsFrom": [
-            "constituent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["constituent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1751,12 +1572,8 @@
           "name": "fk_rec_has_con_jt_rec",
           "tableFrom": "recipe_has_constituents_jt",
           "tableTo": "recipes",
-          "columnsFrom": [
-            "recipe_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["recipe_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1764,10 +1581,7 @@
       "compositePrimaryKeys": {
         "rec_has_con_jt_pk": {
           "name": "rec_has_con_jt_pk",
-          "columns": [
-            "constituent_id",
-            "recipe_id"
-          ]
+          "columns": ["constituent_id", "recipe_id"]
         }
       },
       "uniqueConstraints": {},
@@ -1824,12 +1638,8 @@
           "name": "recipes_predecessor_id_recipes_id_fk",
           "tableFrom": "recipes",
           "tableTo": "recipes",
-          "columnsFrom": [
-            "predecessor_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["predecessor_id"],
+          "columnsTo": ["id"],
           "onDelete": "set default",
           "onUpdate": "set default"
         },
@@ -1837,12 +1647,8 @@
           "name": "fk_rec_goo_bt",
           "tableFrom": "recipes",
           "tableTo": "goods_bt",
-          "columnsFrom": [
-            "good_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["good_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1850,9 +1656,7 @@
       "compositePrimaryKeys": {
         "rec_pk": {
           "name": "rec_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1897,12 +1701,8 @@
           "name": "selling_unit_hierarchies_parent_id_nestables_bt_id_fk",
           "tableFrom": "selling_unit_hierarchies",
           "tableTo": "nestables_bt",
-          "columnsFrom": [
-            "parent_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["parent_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -1910,12 +1710,8 @@
           "name": "fk_sel_uni_hie_sel_uni",
           "tableFrom": "selling_unit_hierarchies",
           "tableTo": "selling_units",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1923,9 +1719,7 @@
       "compositePrimaryKeys": {
         "sel_uni_hie_pk": {
           "name": "sel_uni_hie_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -1964,12 +1758,8 @@
           "name": "fk_sel_uni_bun_bt",
           "tableFrom": "selling_units",
           "tableTo": "bundles_bt",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -1977,9 +1767,7 @@
       "compositePrimaryKeys": {
         "sel_uni_pk": {
           "name": "sel_uni_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -2036,12 +1824,8 @@
           "name": "settings_user_id_users_id_fk",
           "tableFrom": "settings",
           "tableTo": "users",
-          "columnsFrom": [
-            "user_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["user_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         }
@@ -2049,9 +1833,7 @@
       "compositePrimaryKeys": {
         "set_pk": {
           "name": "set_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -2108,12 +1890,8 @@
           "name": "fk_uni_con_jt_fro_uni",
           "tableFrom": "unit_conversions_jt",
           "tableTo": "units",
-          "columnsFrom": [
-            "from_unit_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["from_unit_id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "cascade"
         },
@@ -2121,12 +1899,8 @@
           "name": "fk_uni_con_jt_to_uni",
           "tableFrom": "unit_conversions_jt",
           "tableTo": "units",
-          "columnsFrom": [
-            "to_unit_id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["to_unit_id"],
+          "columnsTo": ["id"],
           "onDelete": "no action",
           "onUpdate": "no action"
         }
@@ -2134,10 +1908,7 @@
       "compositePrimaryKeys": {
         "uni_con_jt_pk": {
           "name": "uni_con_jt_pk",
-          "columns": [
-            "from_unit_id",
-            "to_unit_id"
-          ]
+          "columns": ["from_unit_id", "to_unit_id"]
         }
       },
       "uniqueConstraints": {},
@@ -2187,9 +1958,7 @@
       "compositePrimaryKeys": {
         "uni_pk": {
           "name": "uni_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
@@ -2229,12 +1998,8 @@
           "tableFrom": "users",
           "tableTo": "users",
           "schemaTo": "auth",
-          "columnsFrom": [
-            "id"
-          ],
-          "columnsTo": [
-            "id"
-          ],
+          "columnsFrom": ["id"],
+          "columnsTo": ["id"],
           "onDelete": "cascade",
           "onUpdate": "no action"
         }
@@ -2242,9 +2007,7 @@
       "compositePrimaryKeys": {
         "use_pk": {
           "name": "use_pk",
-          "columns": [
-            "id"
-          ]
+          "columns": ["id"]
         }
       },
       "uniqueConstraints": {},
