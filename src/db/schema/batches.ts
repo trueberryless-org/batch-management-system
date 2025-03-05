@@ -18,7 +18,7 @@ export const batches = pgTable(
     number: text("number").notNull(),
     expiresOn: date("expires_on")
       .notNull()
-      .default(sql`CURRENT_TIMESTAMP + INTERVAL '1 year'`),
+      .default(sql`add_months(sysdate, 12)`),
     note: text("note"),
     insertedAt: timestamp("inserted_at", {
       mode: "date",
